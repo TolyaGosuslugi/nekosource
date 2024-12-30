@@ -6,23 +6,17 @@
 #include <QWidget>
 #include <QStyleFactory>
 #include <QLineEdit>
+#include <QAction>
+#include <QToolButton>
 
 void butts(QWidget *pizdadeda) {
-	pizdadeda->setMinimumSize(1000, 650);
-	QPushButton* butt1 = new QPushButton(pizdadeda);
-	butt1->resize(100, 100);
-	butt1->setText("kesha lox");
-	QPixmap pixmap(":/NekoSource/kesha.png");
-	QIcon ButtonIcon(pixmap);
-	butt1->setIcon(ButtonIcon);
-	butt1->setIconSize(QSize(50, 50));
 
-	QPushButton* butt2 = new QPushButton(pizdadeda);
-	butt2->resize(100, 100);
-	butt2->setText("pizda");
-	QPixmap pixmap2(":/NekoSource/bomzi.png");
-	QIcon ButtonIcon2(pixmap2);
-	butt2->setIcon(ButtonIcon2);
-	butt2->setIconSize(QSize(50, 50));
-	butt2->move(100, 0);
+    QToolButton *toolButton1 = new QToolButton(pizdadeda);
+    toolButton1->setText("Pizda Deda Flac");
+    toolButton1->setIcon(QIcon(":/NekoSource/bomzi.png"));
+    toolButton1->setIconSize(QSize(50, 50));
+    toolButton1->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+    //toolButton->resize(100, 100);
+    toolButton1->show();
+
 }

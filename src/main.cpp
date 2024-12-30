@@ -12,6 +12,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     QWidget* pizdadeda = new QWidget();
+    pizdadeda->setMinimumSize(1000, 650);
 
     butts(pizdadeda);
 
