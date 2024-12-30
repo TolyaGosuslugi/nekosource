@@ -17,7 +17,7 @@ void butts(QWidget *pizdadeda) {
 
     QToolButton *toolButton1 = new QToolButton(pizdadeda);
     toolButton1->setText("Clone Repository");
-    toolButton1->setIcon(QIcon(":/NekoSource/bomzi.png"));
+    toolButton1->setIcon(QIcon(":/NekoSource/tuka.png"));
     toolButton1->setIconSize(QSize(50, 50));
     toolButton1->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
 
