@@ -1,4 +1,8 @@
 <RCC>
     <qresource prefix="NekoSource">
+	<file>kesha.png</file>
+	<file>gena.png</file>
+	<file>bomzi.png</file>
+	<file>tuka.png</file>
     </qresource>
 </RCC>
