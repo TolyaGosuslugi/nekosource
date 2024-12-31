@@ -1,5 +1,7 @@
 #pragma once
 #include "settings.h"
+#include <iostream>
+#include <filesystem>
 #include <QtWidgets/QApplication>
 #include <QPushButton>
 #include <QSize>
@@ -52,8 +54,15 @@ void butts(QWidget *mainWindow, QApplication &a) {
             if (parts.size() >= 5 && gitDomains.contains(parts[2])) {
                 QString repoAuthor = parts[3];
                 QString repoName = parts[4];
+                QString command;
 
-                QString command = "PortableGit/bin/git.exe clone " + text + " repos/" + repoAuthor + "/" + repoName;
+                if (std::filesystem::exists("PortableGit")) {
+                    command = "PortableGit/bin/git.exe clone " + text + " repos/" + repoAuthor + "/" + repoName;
+                }
+                else {
+                    command = "git clone " + text + " repos/" + repoAuthor + "/" + repoName;
+                }
+                    
                 QProcess* process = new QProcess(newWindow);
                 process->startDetached(command);
             }
