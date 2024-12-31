@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
     QWidget* pizdadeda = new QWidget();
     pizdadeda->setMinimumSize(1000, 650);
 
-    butts(pizdadeda);
+    butts(pizdadeda, a);
 
     //pizdadeda->setWindowIcon(QIcon(":/NekoSource/icon.png"));
     pizdadeda->show();
@@ -33,8 +33,8 @@ int main(int argc, char *argv[])
     p.setColor(QPalette::Highlight, QColor(138, 43, 91));
     p.setColor(QPalette::ButtonText, QColor(255, 220, 240));
     p.setColor(QPalette::WindowText, QColor(240, 190, 215));
-    a.setPalette(p); //pink theme
+    a.setPalette(p); //dark pink theme
 
     return a.exec();
-    //run after compile in Qt cmd: windeployqt "path-to-nekosource.exe"
+    //run in Qt cmd after compile: windeployqt "path-to-nekosource.exe"
 }
