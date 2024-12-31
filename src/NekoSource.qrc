@@ -1,8 +1,9 @@
 <RCC>
     <qresource prefix="/NekoSource">
-        <file>kesha.png</file>
-        <file>gena.png</file>
-        <file>bomzi.png</file>
-        <file>tuka.png</file>
+        <file>translations/ru_RU.qm</file>
+        <file>img/plus-dark.svg</file>
+        <file>img/plus-light.svg</file>
+        <file>img/settings-dark.svg</file>
+        <file>img/settings-light.svg</file>
     </qresource>
 </RCC>

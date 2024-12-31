@@ -1,12 +1,14 @@
 #pragma once
 #include <QSettings>
-#include "langs.h"
+#include <QTranslator>
 QSettings settings("TolyaGosuslugi", "NekoSource");
 QString theme = settings.value("theme", "dark").toString();
-QString lang = settings.value("lang", "en").toString();
+QString lang = settings.value("lang", "en_US").toString();
+QString iconTheme;
 
 void loadSettings(QApplication &a) {
 	if (theme == "dark") {
+		iconTheme = "light";
 		QPalette p = a.palette();
 		p.setColor(QPalette::Window, QColor(53, 53, 53));
 		p.setColor(QPalette::Button, QColor(53, 53, 53));
@@ -15,7 +17,8 @@ void loadSettings(QApplication &a) {
 		p.setColor(QPalette::WindowText, QColor(255, 255, 255));
 		a.setPalette(p);
 	}
-	else if (theme == "pink") {
+	else if (theme == "darkpink") {
+		iconTheme = "light";
 		QPalette p = a.palette();
 		p.setColor(QPalette::Window, QColor(54, 33, 52));
 		p.setColor(QPalette::Button, QColor(88, 48, 72));
@@ -25,6 +28,7 @@ void loadSettings(QApplication &a) {
 		a.setPalette(p);
 	}
 	else if (theme == "light") {
+		iconTheme = "dark";
 		QPalette p = a.palette();
 		p.setColor(QPalette::Window, QColor(240, 240, 240));
 		p.setColor(QPalette::Button, QColor(246, 246, 246));
@@ -36,11 +40,4 @@ void loadSettings(QApplication &a) {
 }
 void setTheme(QVariant themeColor) {
 	settings.setValue("theme", themeColor);
-}
-QString textLocal(QString msg) {
-	if (lang != "en")
-		return QString::fromStdString(transl[(lang + msg).toStdString()]);
-	else {
-		return QString::fromStdString(transl[msg.toStdString()]);
-	}
 }
