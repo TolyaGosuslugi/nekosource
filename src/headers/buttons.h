@@ -1,5 +1,6 @@
 #pragma once
 #include "settings.h"
+#include "settsWindow.h"
 #include <iostream>
 #include <filesystem>
 #include <QtWidgets/QApplication>
@@ -23,16 +24,16 @@
 #include <QVBoxLayout>
 QSize iconSize = QSize(25, 25);
 
-void butts(QWidget *mainWindow, QApplication &a) {
+void butts(QWidget* mainWindow, QApplication& a) {
     QHBoxLayout* hLayout = new QHBoxLayout();
 
-    QToolButton *cloneButton = new QToolButton(mainWindow); // Create new Tool Button in Main Window
+    QToolButton* cloneButton = new QToolButton(mainWindow); // Create new Tool Button in Main Window
     cloneButton->setText(QObject::tr("Clone Repository")); // Button text
     cloneButton->setIcon(QIcon(":/NekoSource/img/plus-" + iconTheme + ".svg")); // Button icon
     cloneButton->setIconSize(iconSize); // Button size
     cloneButton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon); // Text under icon
     QObject::connect(cloneButton, &QToolButton::clicked, [&]() { // Create action on click
-        QWidget *newWindow = new QWidget();
+        QWidget* newWindow = new QWidget();
         newWindow->setAttribute(Qt::WA_DeleteOnClose);
 
         QInputDialog inputDialog;
@@ -46,7 +47,7 @@ void butts(QWidget *mainWindow, QApplication &a) {
         if (ok && !text.isEmpty()) {
             QString repoAuthor;
             QString repoName;
-            QSet<QString> gitDomains = {"github.com", "gitlab.com", "codeberg.org", "gitea.com"};
+            QSet<QString> gitDomains = { "github.com", "gitlab.com", "codeberg.org", "gitea.com" };
             if (!text.startsWith("https://")) {
                 text = "https://" + text;
             }
@@ -62,7 +63,7 @@ void butts(QWidget *mainWindow, QApplication &a) {
                 else {
                     command = "git clone " + text + " repos/" + repoAuthor + "/" + repoName;
                 }
-                    
+
                 QProcess* process = new QProcess(newWindow);
                 process->startDetached(command);
             }
@@ -70,7 +71,7 @@ void butts(QWidget *mainWindow, QApplication &a) {
                 QMessageBox::warning(nullptr, "Warning", "Incorrect link!");
             }
         }
-    });
+        });
     cloneButton->show(); // Show button
 
     QToolButton* settingsButton = new QToolButton(mainWindow); // Create new Tool Button in Main Window
@@ -78,6 +79,9 @@ void butts(QWidget *mainWindow, QApplication &a) {
     settingsButton->setIcon(QIcon(":/NekoSource/img/settings-" + iconTheme + ".svg")); // Button icon
     settingsButton->setIconSize(iconSize); // Button size
     settingsButton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon); // Text under icon
+    QObject::connect(settingsButton, &QToolButton::clicked, [&]() {
+        createSettingsWindow(mainWindow); // settsWindow.h
+    });
     settingsButton->show(); // Show button
 
     hLayout->addWidget(cloneButton);
