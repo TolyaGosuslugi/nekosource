@@ -40,7 +40,7 @@ void butts(QWidget* mainWindow, QApplication& a) {
         bool ok;
         QString text = inputDialog.getText(newWindow,
             QObject::tr("Clone Repository"),
-            "Enter repository link:",
+            QObject::tr("Enter repository link:"),
             QLineEdit::Normal,
             "",
             &ok);
@@ -68,7 +68,7 @@ void butts(QWidget* mainWindow, QApplication& a) {
                 process->startDetached(command);
             }
             else {
-                QMessageBox::warning(nullptr, "Warning", "Incorrect link!");
+                QMessageBox::warning(nullptr, QObject::tr("Warning"), QObject::tr("Incorrect link!"));
             }
         }
         });
@@ -80,7 +80,7 @@ void butts(QWidget* mainWindow, QApplication& a) {
     settingsButton->setIconSize(iconSize); // Button size
     settingsButton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon); // Text under icon
     QObject::connect(settingsButton, &QToolButton::clicked, [&]() {
-        createSettingsWindow(mainWindow); // settsWindow.h
+        createSettingsWindow(a); // settsWindow.h
     });
     settingsButton->show(); // Show button
 
