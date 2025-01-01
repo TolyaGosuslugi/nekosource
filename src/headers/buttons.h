@@ -29,7 +29,7 @@ void butts(QWidget* mainWindow, QApplication& a) {
 
     QToolButton* cloneButton = new QToolButton(mainWindow); // Create new Tool Button in Main Window
     cloneButton->setText(QObject::tr("Clone Repository")); // Button text
-    cloneButton->setIcon(QIcon(":/NekoSource/img/plus-" + iconTheme + ".svg")); // Button icon
+    cloneButton->setIcon(QIcon(":/NekoSource/img/plus-uni.svg"));// + iconTheme + ".svg")); // Button icon
     cloneButton->setIconSize(iconSize); // Button size
     cloneButton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon); // Text under icon
     QObject::connect(cloneButton, &QToolButton::clicked, [&]() { // Create action on click
@@ -72,16 +72,18 @@ void butts(QWidget* mainWindow, QApplication& a) {
             }
         }
         });
+    cloneButton->setProperty("iconName", "settings");
     cloneButton->show(); // Show button
 
     QToolButton* settingsButton = new QToolButton(mainWindow); // Create new Tool Button in Main Window
     settingsButton->setText(QObject::tr("Settings")); // Button text
-    settingsButton->setIcon(QIcon(":/NekoSource/img/settings-" + iconTheme + ".svg")); // Button icon
+    settingsButton->setIcon(QIcon(":/NekoSource/img/settings-uni.svg"));// + iconTheme + ".svg")); // Button icon
     settingsButton->setIconSize(iconSize); // Button size
     settingsButton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon); // Text under icon
     QObject::connect(settingsButton, &QToolButton::clicked, [&]() {
         createSettingsWindow(a); // settsWindow.h
     });
+    settingsButton->setProperty("iconName", "settings");
     settingsButton->show(); // Show button
 
     hLayout->addWidget(cloneButton);

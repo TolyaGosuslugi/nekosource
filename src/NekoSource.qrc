@@ -5,5 +5,7 @@
         <file>img/plus-light.svg</file>
         <file>img/settings-dark.svg</file>
         <file>img/settings-light.svg</file>
+        <file>img/plus-uni.svg</file>
+        <file>img/settings-uni.svg</file>
     </qresource>
 </RCC>

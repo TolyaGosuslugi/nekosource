@@ -1,10 +1,23 @@
 #pragma once
 #include <QSettings>
+#include <QToolButton>
 #include <QTranslator>
+#include <QMessageBox>
 QSettings settings("TolyaGosuslugi", "NekoSource");
 QString theme = settings.value("theme", "dark").toString();
 QString lang = settings.value("lang", "en_US").toString();
 QString iconTheme;
+
+/* void updateIcons(QWidget* mainWindow) {
+	QList<QToolButton*> buttons = mainWindow->findChildren<QToolButton*>();
+	for (QToolButton* button : buttons) {
+		QString iconPath = button->property("iconName").toString();
+		if (!iconPath.isEmpty()) {
+			button->setIcon(QIcon(":/NekoSource/img/" + iconPath + "-" + iconTheme + ".svg"));
+		}
+	}
+} */
+// TODO: icon color update
 
 void setDarkTheme(QApplication& a) {
 	iconTheme = "light";
@@ -36,6 +49,7 @@ void setLightTheme(QApplication& a) {
 	p.setColor(QPalette::WindowText, QColor(0, 0, 0));
 	a.setPalette(p);
 }
+
 
 
 void loadSettings(QApplication &a) {
