@@ -1,24 +1,39 @@
 #pragma once
 #include <filesystem>
 #include <QWidget>
+#include <QVBoxLayout>
 #include <QtWidgets/QApplication>
 #include <QList>
 #include <QListWidget>
 #include <QString>
+#include <QMenu>
+#include <QAction>
+#include <QMessageBox>
+#include <QTableWidget>
 
-void showListWidget(QWidget* mainWindow) {
-	QListWidget* mainList = new QListWidget(mainWindow);
-	mainList->setMinimumSize(300, 600);
+QWidget* showTableWidget(QTableWidget* mainList) {
+    mainList->setRowCount(0);
+    int row = 0;
+    for (const auto& entry : std::filesystem::recursive_directory_iterator("repos")) {
+        if (entry.is_directory()) {
+            QString partsStr = QString::fromStdString(entry.path().string());
+            QStringList parts = partsStr.split("\\");
+            if (parts.size() == 3) {
+                mainList->insertRow(row);
 
-	for (const auto& entry : std::filesystem::recursive_directory_iterator("repos")) {
-		if (entry.is_directory()) {
-			QString partsStr = QString::fromStdString(entry.path().string());
-			QStringList parts = partsStr.split("\\");
-			if (parts.size() == 3) {
-				mainList->addItem(partsStr);
-			}
-		}
-	}
+                QTableWidgetItem* pathItem = new QTableWidgetItem(partsStr);
+                mainList->setItem(row, 0, pathItem);
 
-	mainList->show();
+                QTableWidgetItem* column2Item = new QTableWidgetItem("placeholder");
+                mainList->setItem(row, 1, column2Item);
+
+                row++;
+            }
+        }
+    }
+}
+
+void updateReposTable(QTableWidget* mainList) {
+    mainList->clear();
+    showTableWidget(mainList);
 }

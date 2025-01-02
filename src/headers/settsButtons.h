@@ -10,6 +10,7 @@
 #include <QtWidgets/QApplication>
 #include <QApplication>
 #include <QProcess>
+//QsysSetts sysSetts("TolyaGosuslugi", "NekoSource");
 QString newLng;
 
 void settsbutts(QWidget* settsWind, QApplication& a) {
@@ -29,7 +30,7 @@ void settsbutts(QWidget* settsWind, QApplication& a) {
 
     for (const QString& lang : languages) {
         QAction* action = lngMenu->addAction(lang);
-        QObject::connect(action, &QAction::triggered, [lang, &sysSetts, langButton]() {
+        QObject::connect(action, &QAction::triggered, [lang, langButton]() {
             settings.setValue("lang", lang);
             langButton->setText(lang);
             QMessageBox::StandardButton reply = QMessageBox::information(
@@ -61,20 +62,20 @@ void settsbutts(QWidget* settsWind, QApplication& a) {
     QAction* light = thmMenu->addAction("light");
     QAction* dark = thmMenu->addAction("dark");
     QAction* darkpink = thmMenu->addAction("darkpink");
-    QObject::connect(light, &QAction::triggered, [&, thmButton, thm]() {
+    QObject::connect(light, &QAction::triggered, [thmButton, &sysSetts, &a]() {
         setLightTheme(a);
         settings.setValue("theme", "light");
-        thmButton->setText(sysSetts.value("theme", "dark").toString());
+        thmButton->setText(settings.value("theme", "dark").toString());
         });
-    QObject::connect(dark, &QAction::triggered, [&, thmButton, thm]() {
+    QObject::connect(dark, &QAction::triggered, [thmButton, &sysSetts, &a]() {
         setDarkTheme(a);
         settings.setValue("theme", "dark");
-        thmButton->setText(sysSetts.value("theme", "dark").toString());
+        thmButton->setText(settings.value("theme", "dark").toString());
         });
-    QObject::connect(darkpink, &QAction::triggered, [&, thmButton, thm]() {
+    QObject::connect(darkpink, &QAction::triggered, [thmButton, &sysSetts, &a]() {
         setDarkPinkTheme(a);
         settings.setValue("theme", "darkpink");
-        thmButton->setText(sysSetts.value("theme", "dark").toString());
+        thmButton->setText(settings.value("theme", "dark").toString());
         });
 
     thmButton->setMenu(thmMenu);

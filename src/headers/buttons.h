@@ -1,6 +1,7 @@
 #pragma once
 #include "settings.h"
 #include "settsWindow.h"
+#include "reposList.h"
 #include <iostream>
 #include <filesystem>
 #include <QtWidgets/QApplication>
@@ -22,17 +23,28 @@
 #include <QTranslator>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
+#include <QTableWidget>
+#include <QHeaderView>
 QSize iconSize = QSize(25, 25);
 
 void butts(QWidget* mainWindow, QApplication& a) {
+    QTableWidget* mainList = new QTableWidget(0, 2, mainWindow);
+    mainList->setHorizontalHeaderLabels(QStringList() << QObject::tr("Path") << QObject::tr("Link"));
+    mainList->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Stretch);
+    mainList->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
+    mainList->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    showTableWidget(mainList);
+
+    QVBoxLayout* mainLayout = new QVBoxLayout(mainWindow);
+
     QHBoxLayout* hLayout = new QHBoxLayout();
 
-    QToolButton* cloneButton = new QToolButton(mainWindow); // Create new Tool Button in Main Window
-    cloneButton->setText(QObject::tr("Clone Repository")); // Button text
-    cloneButton->setIcon(QIcon(":/NekoSource/img/plus-uni.svg"));// + iconTheme + ".svg")); // Button icon
-    cloneButton->setIconSize(iconSize); // Button size
-    cloneButton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon); // Text under icon
-    QObject::connect(cloneButton, &QToolButton::clicked, [&]() { // Create action on click
+    QToolButton* cloneButton = new QToolButton(mainWindow);
+    cloneButton->setText(QObject::tr("Clone Repository"));
+    cloneButton->setIcon(QIcon(":/NekoSource/img/plus-uni.svg"));
+    cloneButton->setIconSize(iconSize);
+    cloneButton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+    QObject::connect(cloneButton, &QToolButton::clicked, [&, mainList]() {
         QWidget* newWindow = new QWidget();
         newWindow->setAttribute(Qt::WA_DeleteOnClose);
 
@@ -68,27 +80,38 @@ void butts(QWidget* mainWindow, QApplication& a) {
                 process->startDetached(command);
             }
             else {
-                QMessageBox::warning(nullptr, QObject::tr("Warning"), QObject::tr("Incorrect link!"));
+                QMessageBox::warning(nullptr, QObject::tr("Oops"), QObject::tr("Incorrect link!"));
             }
+            updateReposTable(mainList);
         }
         });
-    cloneButton->setProperty("iconName", "settings");
-    cloneButton->show(); // Show button
+    cloneButton->show();
 
-    QToolButton* settingsButton = new QToolButton(mainWindow); // Create new Tool Button in Main Window
-    settingsButton->setText(QObject::tr("Settings")); // Button text
-    settingsButton->setIcon(QIcon(":/NekoSource/img/settings-uni.svg"));// + iconTheme + ".svg")); // Button icon
-    settingsButton->setIconSize(iconSize); // Button size
-    settingsButton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon); // Text under icon
+    QToolButton* settingsButton = new QToolButton(mainWindow);
+    settingsButton->setText(QObject::tr("Settings"));
+    settingsButton->setIcon(QIcon(":/NekoSource/img/settings-uni.svg"));
+    settingsButton->setIconSize(iconSize);
+    settingsButton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
     QObject::connect(settingsButton, &QToolButton::clicked, [&]() {
-        createSettingsWindow(a); // settsWindow.h
-    });
-    settingsButton->setProperty("iconName", "settings");
-    settingsButton->show(); // Show button
+        createSettingsWindow(a);
+        });
+    settingsButton->show();
 
     hLayout->addWidget(cloneButton);
     hLayout->addWidget(settingsButton);
     hLayout->setAlignment(Qt::AlignLeft);
-    hLayout->setAlignment(Qt::AlignTop);
-    mainWindow->setLayout(hLayout);
+
+    mainLayout->addLayout(hLayout);
+
+    /* QTableWidget* mainList = new QTableWidget(0, 2, mainWindow);
+    mainList->setHorizontalHeaderLabels(QStringList() << QObject::tr("Path") << QObject::tr("Link"));
+    mainList->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Stretch);
+    mainList->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
+    mainList->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    showTableWidget(mainList); */
+
+    mainLayout->addWidget(mainList);
+    mainLayout->setAlignment(Qt::AlignTop);
+
+    mainWindow->setLayout(mainLayout);
 }

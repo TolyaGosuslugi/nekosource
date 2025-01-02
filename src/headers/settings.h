@@ -29,6 +29,8 @@ void setDarkTheme(QApplication& a) {
 	p.setColor(QPalette::Highlight, QColor(0, 120, 215));
 	p.setColor(QPalette::ButtonText, QColor(255, 255, 255));
 	p.setColor(QPalette::WindowText, QColor(255, 255, 255));
+	p.setColor(QPalette::Text, QColor(255, 255, 255));
+	p.setColor(QPalette::Base, QColor(53, 53, 53));
 	a.setPalette(p);
 }
 void setDarkPinkTheme(QApplication& a) {
@@ -39,6 +41,8 @@ void setDarkPinkTheme(QApplication& a) {
 	p.setColor(QPalette::Highlight, QColor(138, 43, 91));
 	p.setColor(QPalette::ButtonText, QColor(255, 220, 240));
 	p.setColor(QPalette::WindowText, QColor(240, 190, 215));
+	p.setColor(QPalette::Text, QColor(255, 220, 240));
+	p.setColor(QPalette::Base, QColor(54, 33, 52));
 	a.setPalette(p);
 }
 void setLightTheme(QApplication& a) {
@@ -49,6 +53,8 @@ void setLightTheme(QApplication& a) {
 	p.setColor(QPalette::Highlight, QColor(0, 120, 215));
 	p.setColor(QPalette::ButtonText, QColor(0, 0, 0));
 	p.setColor(QPalette::WindowText, QColor(0, 0, 0));
+	p.setColor(QPalette::Text, QColor(0, 0, 0));
+	p.setColor(QPalette::Base, QColor(240, 240, 240));
 	a.setPalette(p);
 }
 

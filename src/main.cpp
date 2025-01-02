@@ -34,9 +34,7 @@ int main(int argc, char *argv[])
     translator.load(":/NekoSource/translations/" + lang + ".qm");
     a.installTranslator(&translator);
 
-    butts(mainWindw, a); // [buttons.h] Create Buttons in Main Window
-
-    showListWidget(mainWindw); // [reposList.h] Create List Widget
+    butts(mainWindw, a); // [buttons.h] Create Buttons in Main Window || [reposList.h] Show List of repos
 
     //mainWindw->setWindowIcon(QIcon(":/NekoSource/icon.png")); // Set app icon
     mainWindw->show(); // Show Main Window
