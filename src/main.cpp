@@ -10,6 +10,9 @@
 #include <QLineEdit>
 #include <QTextCodec>
 #include <QSettings>
+#include <QList>
+#include <QLabel>
+#include <QListWidget>
 
 int main(int argc, char *argv[])
 {
@@ -41,7 +44,7 @@ int main(int argc, char *argv[])
     //run in Qt cmd after compile: windeployqt "path-to-nekosource.exe"
 
     //to generate lang: 
-    // 1. lupdate main.cpp C:\Users\User\source\repos\NekoSource\NekoSource\src\headers\buttons.h C:\Users\User\source\repos\NekoSource\NekoSource\src\headers\settings.h C:\Users\User\source\repos\NekoSource\NekoSource\src\headers\settsButtons.h C:\Users\User\source\repos\NekoSource\NekoSource\src\headers\settsWindow.h -ts translations/ru_RU.ts
+    // 1. lupdate main.cpp headers\buttons.h headers\settings.h headers\settsButtons.h headers\settsWindow.h -ts translations/ru_RU.ts
     // 2. linguist translations/ru_RU.ts
     // 3. lrelease translations/ru_RU.ts
 }

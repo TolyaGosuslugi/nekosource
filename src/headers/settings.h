@@ -3,6 +3,8 @@
 #include <QToolButton>
 #include <QTranslator>
 #include <QMessageBox>
+#include <filesystem>
+#include <QList>
 QSettings settings("TolyaGosuslugi", "NekoSource");
 QString theme = settings.value("theme", "dark").toString();
 QString lang = settings.value("lang", "en_US").toString();
@@ -63,3 +65,14 @@ void loadSettings(QApplication &a) {
 		setLightTheme(a);
 	}
 }
+
+/* QList<QString> listAllSubdirectories() {
+	QList <QString> dirs;
+	for (const auto& entry : std::filesystem::recursive_directory_iterator("repos")) {
+		if (entry.is_directory()) {
+			dirs.append(QString::fromStdString(entry.path().string()));
+		}
+	}
+	return dirs;
+} */
+// TODO: check /repos/*Author*/*RepoName* (subfolders) to add it to list

@@ -10,10 +10,10 @@
 #include <QtWidgets/QApplication>
 #include <QApplication>
 #include <QProcess>
-QSettings sysSetts("TolyaGosuslugi", "NekoSource");
 QString newLng;
 
 void settsbutts(QWidget* settsWind, QApplication& a) {
+    QSettings sysSetts("TolyaGosuslugi", "NekoSource");
     QString thm = sysSetts.value("theme", "dark").toString();
     QString lng = sysSetts.value("lang", "en_US").toString();
     QVBoxLayout* mainLayout = new QVBoxLayout(settsWind);
@@ -25,26 +25,23 @@ void settsbutts(QWidget* settsWind, QApplication& a) {
     langButton->setText(lng);
 
     QMenu* lngMenu = new QMenu(langButton);
-    QAction* en = lngMenu->addAction("en_US");
-    QAction* ru = lngMenu->addAction("ru_RU");
-    QObject::connect(en, &QAction::triggered, [&, langButton, lng]() {
-        settings.setValue("lang", "en_US");
-        langButton->setText(sysSetts.value("lang", "en_US").toString());
-        QMessageBox::StandardButton reply = QMessageBox::information(nullptr, QObject::tr("Settings"), QObject::tr("Restart the program to take effect."), QMessageBox::Yes | QMessageBox::No);
-        if (reply == QMessageBox::Yes) {
-            qApp->quit();
-            QProcess::startDetached(qApp->arguments()[0], qApp->arguments());
-        }
-        });
-    QObject::connect(ru, &QAction::triggered, [&, langButton, lng]() {
-        settings.setValue("lang", "ru_RU");
-        langButton->setText(sysSetts.value("lang", "en_US").toString());
-        QMessageBox::StandardButton reply = QMessageBox::information(nullptr, QObject::tr("Settings"), QObject::tr("Restart the program to take effect."), QMessageBox::Yes | QMessageBox::No);
-        if (reply == QMessageBox::Yes) {
-            qApp->quit();
-            QProcess::startDetached(qApp->arguments()[0], qApp->arguments());
-        }
-        });
+    QStringList languages = {"en_US", "ru_RU"}; // Список доступных языков
+
+    for (const QString& lang : languages) {
+        QAction* action = lngMenu->addAction(lang);
+        QObject::connect(action, &QAction::triggered, [lang, &sysSetts, langButton]() {
+            settings.setValue("lang", lang);
+            langButton->setText(lang);
+            QMessageBox::StandardButton reply = QMessageBox::information(
+                nullptr, QObject::tr("Settings"), QObject::tr("Restart the program to take effect."),
+                QMessageBox::Yes | QMessageBox::No
+            );
+            if (reply == QMessageBox::Yes) {
+                qApp->quit();
+                QProcess::startDetached(qApp->arguments()[0], qApp->arguments());
+            }
+            });
+    }
 
     langButton->setMenu(lngMenu);
     langButton->setPopupMode(QToolButton::InstantPopup);
