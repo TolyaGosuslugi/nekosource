@@ -17,7 +17,7 @@
     </message>
     <message>
         <source>Warning</source>
-        <translation>Предупреждение</translation>
+        <translation type="vanished">Предупреждение</translation>
     </message>
     <message>
         <source>Incorrect link!</source>
@@ -34,6 +34,22 @@
     <message>
         <source>Theme</source>
         <translation>Тема</translation>
+    </message>
+    <message>
+        <source>Path</source>
+        <translation>Путь</translation>
+    </message>
+    <message>
+        <source>Link</source>
+        <translation>Ссылка</translation>
+    </message>
+    <message>
+        <source>Refresh</source>
+        <translation>Обновить</translation>
+    </message>
+    <message>
+        <source>Oops</source>
+        <translation>Упс</translation>
     </message>
 </context>
 </TS>

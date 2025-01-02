@@ -39,6 +39,18 @@ void butts(QWidget* mainWindow, QApplication& a) {
 
     QHBoxLayout* hLayout = new QHBoxLayout();
 
+    QToolButton* refreshButton = new QToolButton(mainWindow);
+    refreshButton->setText(QObject::tr("Refresh"));
+    refreshButton->setIcon(QIcon(":/NekoSource/img/refresh-uni.svg"));
+    refreshButton->setIconSize(iconSize);
+    refreshButton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+    QObject::connect(refreshButton, &QToolButton::clicked, [&, mainList]() {
+        updateReposTable(mainList);
+    });
+    refreshButton->show();
+
+    QLabel* between = new QLabel("|");
+
     QToolButton* cloneButton = new QToolButton(mainWindow);
     cloneButton->setText(QObject::tr("Clone Repository"));
     cloneButton->setIcon(QIcon(":/NekoSource/img/plus-uni.svg"));
@@ -82,6 +94,7 @@ void butts(QWidget* mainWindow, QApplication& a) {
             else {
                 QMessageBox::warning(nullptr, QObject::tr("Oops"), QObject::tr("Incorrect link!"));
             }
+            delay(1);
             updateReposTable(mainList);
         }
         });
@@ -97,6 +110,8 @@ void butts(QWidget* mainWindow, QApplication& a) {
         });
     settingsButton->show();
 
+    hLayout->addWidget(refreshButton);
+    hLayout->addWidget(between);
     hLayout->addWidget(cloneButton);
     hLayout->addWidget(settingsButton);
     hLayout->setAlignment(Qt::AlignLeft);

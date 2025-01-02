@@ -10,6 +10,7 @@
 #include <QAction>
 #include <QMessageBox>
 #include <QTableWidget>
+#include <QTime>
 
 QWidget* showTableWidget(QTableWidget* mainList) {
     mainList->setRowCount(0);
@@ -36,4 +37,12 @@ QWidget* showTableWidget(QTableWidget* mainList) {
 void updateReposTable(QTableWidget* mainList) {
     mainList->clear();
     showTableWidget(mainList);
+    mainList->setHorizontalHeaderLabels(QStringList() << QObject::tr("Path") << QObject::tr("Link"));
+}
+
+void delay(int secs)
+{
+    QTime dieTime = QTime::currentTime().addSecs(secs);
+    while (QTime::currentTime() < dieTime)
+        QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
 }

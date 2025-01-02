@@ -35,6 +35,7 @@ int main(int argc, char *argv[])
     a.installTranslator(&translator);
 
     butts(mainWindw, a); // [buttons.h] Create Buttons in Main Window || [reposList.h] Show List of repos
+    
 
     //mainWindw->setWindowIcon(QIcon(":/NekoSource/icon.png")); // Set app icon
     mainWindw->show(); // Show Main Window
@@ -42,10 +43,11 @@ int main(int argc, char *argv[])
     a.setStyle(QStyleFactory::create("Fusion")); // Set theme style Fusion
 
     return a.exec();
+
     //run in Qt cmd after compile: windeployqt "path-to-nekosource.exe"
 
     //to generate lang: 
-    // 1. lupdate main.cpp headers\buttons.h headers\settings.h headers\settsButtons.h headers\settsWindow.h -ts translations/ru_RU.ts
+    // 1. lupdate main.cpp headers\buttons.h headers\settings.h headers\settsButtons.h headers\settsWindow.h headers\reposList.h -ts translations/ru_RU.ts
     // 2. linguist translations/ru_RU.ts
     // 3. lrelease translations/ru_RU.ts
 }

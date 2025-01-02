@@ -7,5 +7,6 @@
         <file>img/settings-light.svg</file>
         <file>img/plus-uni.svg</file>
         <file>img/settings-uni.svg</file>
+        <file>img/refresh-uni.svg</file>
     </qresource>
 </RCC>
