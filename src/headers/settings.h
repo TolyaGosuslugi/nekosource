@@ -55,6 +55,12 @@ void setLightTheme(QApplication& a) {
 
 
 void loadSettings(QApplication &a) {
+	// check repos folder
+	if (!std::filesystem::exists("repos")) {
+		std::filesystem::create_directory("repos");
+	}
+
+	// set theme from regedit
 	if (theme == "dark") {
 		setDarkTheme(a);
 	}
@@ -65,14 +71,3 @@ void loadSettings(QApplication &a) {
 		setLightTheme(a);
 	}
 }
-
-/* QList<QString> listAllSubdirectories() {
-	QList <QString> dirs;
-	for (const auto& entry : std::filesystem::recursive_directory_iterator("repos")) {
-		if (entry.is_directory()) {
-			dirs.append(QString::fromStdString(entry.path().string()));
-		}
-	}
-	return dirs;
-} */
-// TODO: check /repos/*Author*/*RepoName* (subfolders) to add it to list

@@ -1,6 +1,7 @@
 ﻿#include "NekoSource.h"
 #include "headers/buttons.h"
 #include "headers/settings.h"
+#include "headers/reposList.h"
 #include <QtWidgets/QApplication>
 #include <QPushButton>
 #include <QSize>
@@ -33,7 +34,9 @@ int main(int argc, char *argv[])
     translator.load(":/NekoSource/translations/" + lang + ".qm");
     a.installTranslator(&translator);
 
-    butts(mainWindw, a); // Create Buttons in Main Window
+    butts(mainWindw, a); // [buttons.h] Create Buttons in Main Window
+
+    showListWidget(mainWindw); // [reposList.h] Create List Widget
 
     //mainWindw->setWindowIcon(QIcon(":/NekoSource/icon.png")); // Set app icon
     mainWindw->show(); // Show Main Window
