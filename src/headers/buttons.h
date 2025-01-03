@@ -25,6 +25,8 @@
 #include <QVBoxLayout>
 #include <QTableWidget>
 #include <QHeaderView>
+#include <QModelIndexList>
+#include <QDir>
 QSize iconSize = QSize(25, 25);
 
 void butts(QWidget* mainWindow, QApplication& a) {
@@ -53,7 +55,7 @@ void butts(QWidget* mainWindow, QApplication& a) {
 
     QToolButton* cloneButton = new QToolButton(mainWindow);
     cloneButton->setText(QObject::tr("Clone Repository"));
-    cloneButton->setIcon(QIcon(":/NekoSource/img/plus-uni.svg"));
+    cloneButton->setIcon(QIcon(":/NekoSource/img/download-uni.svg"));
     cloneButton->setIconSize(iconSize);
     cloneButton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
     QObject::connect(cloneButton, &QToolButton::clicked, [&, mainList]() {
@@ -95,10 +97,53 @@ void butts(QWidget* mainWindow, QApplication& a) {
                 QMessageBox::warning(nullptr, QObject::tr("Oops"), QObject::tr("Incorrect link!"));
             }
             delay(1);
+            QProcess* process = new QProcess(newWindow);
+            QString command = "attrib - r /s /d repos\\" + repoAuthor + "\\" + repoName;
+            process->startDetached(command);
             updateReposTable(mainList);
         }
-        });
+    });
     cloneButton->show();
+
+    QToolButton* removeButton = new QToolButton(mainWindow);
+    removeButton->setText(QObject::tr("Remove Selected"));
+    removeButton->setIcon(QIcon(":/NekoSource/img/trash-uni.svg"));
+    removeButton->setIconSize(iconSize);
+    removeButton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+    QObject::connect(removeButton, &QToolButton::clicked, [&, mainList]() {
+        QItemSelectionModel* selectionModel = mainList->selectionModel();
+        QModelIndexList selectedIndexes = selectionModel->selectedIndexes();
+
+        if (!selectedIndexes.isEmpty()) {
+            int row = selectedIndexes.first().row();
+            int column = 0;
+            QTableWidgetItem* pathItem = mainList->item(row, column);
+
+            QMessageBox::StandardButton areYouSure = QMessageBox::information(nullptr, QObject::tr("Wait"), QObject::tr("Are you sure?"), QMessageBox::Yes | QMessageBox::No);
+            if (areYouSure == QMessageBox::Yes) {
+                QString path = pathItem->text();
+                QMessageBox::information(nullptr, QObject::tr("Wait"), path);
+
+                try {
+                    QProcess* process = new QProcess();
+                    QString command = "attrib -r /s /d " + path;
+                    process->startDetached(command);
+                    std::filesystem::remove_all(path.toStdString());
+
+                    delay(1);
+                    updateReposTable(mainList);
+                }
+                catch (const std::exception& e) {
+                    QMessageBox::information(nullptr, QObject::tr("Error"), QObject::tr(e.what()));
+                }
+            }
+        }
+        else {
+            QMessageBox::warning(nullptr, QObject::tr("Oops"), QObject::tr("No row selected!"));
+        }
+
+    });
+    removeButton->show();
 
     QToolButton* settingsButton = new QToolButton(mainWindow);
     settingsButton->setText(QObject::tr("Settings"));
@@ -107,23 +152,17 @@ void butts(QWidget* mainWindow, QApplication& a) {
     settingsButton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
     QObject::connect(settingsButton, &QToolButton::clicked, [&]() {
         createSettingsWindow(a);
-        });
+    });
     settingsButton->show();
 
     hLayout->addWidget(refreshButton);
     hLayout->addWidget(between);
     hLayout->addWidget(cloneButton);
+    hLayout->addWidget(removeButton);
     hLayout->addWidget(settingsButton);
     hLayout->setAlignment(Qt::AlignLeft);
 
     mainLayout->addLayout(hLayout);
-
-    /* QTableWidget* mainList = new QTableWidget(0, 2, mainWindow);
-    mainList->setHorizontalHeaderLabels(QStringList() << QObject::tr("Path") << QObject::tr("Link"));
-    mainList->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Stretch);
-    mainList->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
-    mainList->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    showTableWidget(mainList); */
 
     mainLayout->addWidget(mainList);
     mainLayout->setAlignment(Qt::AlignTop);

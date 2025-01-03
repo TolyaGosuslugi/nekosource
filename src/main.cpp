@@ -35,9 +35,8 @@ int main(int argc, char *argv[])
     a.installTranslator(&translator);
 
     butts(mainWindw, a); // [buttons.h] Create Buttons in Main Window || [reposList.h] Show List of repos
-    
 
-    //mainWindw->setWindowIcon(QIcon(":/NekoSource/icon.png")); // Set app icon
+    //mainWindw->setWindowIcon(QIcon(":/NekoSource/img/icon.jpg")); // Set app icon
     mainWindw->show(); // Show Main Window
 
     a.setStyle(QStyleFactory::create("Fusion")); // Set theme style Fusion
