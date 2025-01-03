@@ -110,7 +110,7 @@ void butts(QWidget* mainWindow, QApplication& a) {
     removeButton->setIcon(QIcon(":/NekoSource/img/trash-uni.svg"));
     removeButton->setIconSize(iconSize);
     removeButton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-    QObject::connect(removeButton, &QToolButton::clicked, [&, mainList]() {
+    QObject::connect(removeButton, &QToolButton::clicked, [&, mainList, mainWindow]() {
         QItemSelectionModel* selectionModel = mainList->selectionModel();
         QModelIndexList selectedIndexes = selectionModel->selectedIndexes();
 
@@ -122,13 +122,15 @@ void butts(QWidget* mainWindow, QApplication& a) {
             QMessageBox::StandardButton areYouSure = QMessageBox::information(nullptr, QObject::tr("Wait"), QObject::tr("Are you sure?"), QMessageBox::Yes | QMessageBox::No);
             if (areYouSure == QMessageBox::Yes) {
                 QString path = pathItem->text();
-                QMessageBox::information(nullptr, QObject::tr("Wait"), path);
+                //QMessageBox::information(nullptr, QObject::tr("Wait"), path);
 
                 try {
-                    QProcess* process = new QProcess();
-                    QString command = "attrib -r /s /d " + path;
-                    process->startDetached(command);
-                    std::filesystem::remove_all(path.toStdString());
+                    //QProcess* process = new QProcess(mainWindow);
+                    //QString command = "attrib -r /s /d " + path; // it doesn't remove the "read only" checkbox from folder
+                    QString command = "rmdir /s /q " + path;
+                    //process->startDetached(command);
+                    //std::filesystem::remove_all(path.toStdString());
+                    std::system(command.toStdString().c_str()); // filesystem doesnt delete the folder, so i use this
 
                     delay(1);
                     updateReposTable(mainList);

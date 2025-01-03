@@ -5,7 +5,7 @@
     <name>QObject</name>
     <message>
         <source>Clone Repository</source>
-        <translation>Клонировать репозиторию</translation>
+        <translation>Клонировать репозиторий</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -14,10 +14,6 @@
     <message>
         <source>Enter repository link:</source>
         <translation>Введите ссылку на репозиторию:</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Предупреждение</translation>
     </message>
     <message>
         <source>Incorrect link!</source>
@@ -50,6 +46,26 @@
     <message>
         <source>Oops</source>
         <translation>Упс</translation>
+    </message>
+    <message>
+        <source>Remove Selected</source>
+        <translation>Удалить</translation>
+    </message>
+    <message>
+        <source>Wait</source>
+        <translation>Секунду</translation>
+    </message>
+    <message>
+        <source>Are you sure?</source>
+        <translation>Вы уверены?</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation>Ошибка</translation>
+    </message>
+    <message>
+        <source>No row selected!</source>
+        <translation>Ни одна строчка не выбрана!</translation>
     </message>
 </context>
 </TS>
