@@ -2,6 +2,7 @@
 #include "settings.h"
 #include "settsWindow.h"
 #include "reposList.h"
+#include "about.h"
 #include <iostream>
 #include <filesystem>
 #include <QtWidgets/QApplication>
@@ -147,6 +148,8 @@ void butts(QWidget* mainWindow, QApplication& a) {
     });
     removeButton->show();
 
+    QLabel* between2 = new QLabel("|");
+
     QToolButton* settingsButton = new QToolButton(mainWindow);
     settingsButton->setText(QObject::tr("Settings"));
     settingsButton->setIcon(QIcon(":/NekoSource/img/settings-uni.svg"));
@@ -157,11 +160,23 @@ void butts(QWidget* mainWindow, QApplication& a) {
     });
     settingsButton->show();
 
+    QToolButton* aboutButton = new QToolButton(mainWindow);
+    aboutButton->setText(QObject::tr("About"));
+    aboutButton->setIcon(QIcon(":/NekoSource/img/info-uni.svg"));
+    aboutButton->setIconSize(iconSize);
+    aboutButton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+    QObject::connect(aboutButton, &QToolButton::clicked, [&]() {
+        showAboutWindow();
+    });
+    aboutButton->show();
+
     hLayout->addWidget(refreshButton);
     hLayout->addWidget(between);
     hLayout->addWidget(cloneButton);
     hLayout->addWidget(removeButton);
+    hLayout->addWidget(between2);
     hLayout->addWidget(settingsButton);
+    hLayout->addWidget(aboutButton);
     hLayout->setAlignment(Qt::AlignLeft);
 
     mainLayout->addLayout(hLayout);

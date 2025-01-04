@@ -6,5 +6,6 @@
         <file>img/refresh-uni.svg</file>
         <file>img/settings-uni.svg</file>
         <file>img/trash-uni.svg</file>
+        <file>img/info-uni.svg</file>
     </qresource>
 </RCC>

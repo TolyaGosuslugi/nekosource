@@ -67,5 +67,21 @@
         <source>No row selected!</source>
         <translation>Ни одна строчка не выбрана!</translation>
     </message>
+    <message>
+        <source>About</source>
+        <translation>О софте</translation>
+    </message>
+    <message>
+        <source>main code, russian translation</source>
+        <translation>основной код, перевод на русский</translation>
+    </message>
+    <message>
+        <source>thanks for icons</source>
+        <translation>спасибо за иконки ;)</translation>
+    </message>
+    <message>
+        <source>Thanks for using NekoSource! ^^ || 2024-2025 TolyaGosuslugi</source>
+        <translation>Спасибо, что используете NekoSource! ^^ || 2024-2025 TolyaGosuslugi</translation>
+    </message>
 </context>
 </TS>
