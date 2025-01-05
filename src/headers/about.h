@@ -11,7 +11,7 @@ void showAboutWindow() {
 
 	QLabel* mainLabel = new QLabel(aboutWind);
 	mainLabel->setText(QObject::tr("About"));
-	mainLabel->setStyleSheet(QString("font-size: 30px; color: #FFF").arg(32));
+	mainLabel->setStyleSheet(QString("font-size: 30px; color: #A0A0A0").arg(32));
 	mainLabel->show();
 
 ///////////////////    Authors    ///////////////////

@@ -28,6 +28,7 @@
 #include <QHeaderView>
 #include <QModelIndexList>
 #include <QDir>
+#include <QIODevice>
 QSize iconSize = QSize(25, 25);
 
 void butts(QWidget* mainWindow, QApplication& a) {
@@ -123,22 +124,26 @@ void butts(QWidget* mainWindow, QApplication& a) {
             QMessageBox::StandardButton areYouSure = QMessageBox::information(nullptr, QObject::tr("Wait"), QObject::tr("Are you sure?"), QMessageBox::Yes | QMessageBox::No);
             if (areYouSure == QMessageBox::Yes) {
                 QString path = pathItem->text();
-                //QMessageBox::information(nullptr, QObject::tr("Wait"), path);
+                QString command = "rmdir /s /q " + path;
+                //QProcess* process = new QProcess(mainWindow);
+                //process->startDetached(command);
+                std::system(command.toStdString().c_str());
 
-                try {
+                delay(1);
+                updateReposTable(mainList);
+
+                /* try {
                     //QProcess* process = new QProcess(mainWindow);
-                    //QString command = "attrib -r /s /d " + path; // it doesn't remove the "read only" checkbox from folder
                     QString command = "rmdir /s /q " + path;
                     //process->startDetached(command);
-                    //std::filesystem::remove_all(path.toStdString());
-                    std::system(command.toStdString().c_str()); // filesystem doesnt delete the folder, so i use this
+                    std::system(command.toStdString().c_str());
 
                     delay(1);
                     updateReposTable(mainList);
                 }
                 catch (const std::exception& e) {
                     QMessageBox::information(nullptr, QObject::tr("Error"), QObject::tr(e.what()));
-                }
+                } */
             }
         }
         else {
