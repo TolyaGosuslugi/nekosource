@@ -1,5 +1,6 @@
 #pragma once
 #include <filesystem>
+#include <fstream>
 #include <QWidget>
 #include <QVBoxLayout>
 #include <QtWidgets/QApplication>
@@ -25,8 +26,20 @@ QWidget* showTableWidget(QTableWidget* mainList) {
                 QTableWidgetItem* pathItem = new QTableWidgetItem(partsStr);
                 mainList->setItem(row, 0, pathItem);
 
-                QTableWidgetItem* column2Item = new QTableWidgetItem("placeholder");
-                mainList->setItem(row, 1, column2Item);
+                std::string substrUrl;
+                QString cfgPath = partsStr + "\\.git\\config";
+                QString linkResult;
+                std::ifstream config(cfgPath.toStdString());
+                if (config.is_open()) {
+                    while (std::getline(config, substrUrl)) {
+                        if (QString::fromStdString(substrUrl).contains("url")) {
+                            linkResult = QString::fromStdString(substrUrl).mid(7);
+                        }
+                    }
+                }
+
+                QTableWidgetItem* linkItem = new QTableWidgetItem(linkResult);
+                mainList->setItem(row, 1, linkItem);
 
                 row++;
             }
