@@ -3,6 +3,7 @@
 #include "settsWindow.h"
 #include "reposList.h"
 #include "about.h"
+#include "cloneButton.h"
 #include <iostream>
 #include <filesystem>
 #include <QtWidgets/QApplication>
@@ -27,6 +28,7 @@
 #include <QTableWidget>
 #include <QHeaderView>
 #include <QModelIndexList>
+#include <QClipboard>
 QSize iconSize = QSize(25, 25);
 
 void butts(QWidget* mainWindow, QApplication& a) {
@@ -58,52 +60,17 @@ void butts(QWidget* mainWindow, QApplication& a) {
     cloneButton->setIcon(QIcon(":/img/download-uni.svg"));
     cloneButton->setIconSize(iconSize);
     cloneButton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-    QObject::connect(cloneButton, &QToolButton::clicked, [&, mainList]() {
-        QWidget* newWindow = new QWidget();
-        newWindow->setAttribute(Qt::WA_DeleteOnClose);
-
-        QInputDialog inputDialog;
-        bool ok;
-        QString text = inputDialog.getText(newWindow,
-            QObject::tr("Clone Repository"),
-            QObject::tr("Enter repository link:"),
-            QLineEdit::Normal,
-            "",
-            &ok);
-        if (ok && !text.isEmpty()) {
-            QString repoAuthor;
-            QString repoName;
-            QSet<QString> gitDomains = { "github.com", "gitlab.com", "codeberg.org", "gitea.com" };
-            if (!text.startsWith("https://")) {
-                text = "https://" + text;
-            }
-            QStringList parts = text.split('/');
-            if (parts.size() >= 5 && gitDomains.contains(parts[2])) {
-                QString repoAuthor = parts[3];
-                QString repoName = parts[4];
-                QString command;
-
-                if (std::filesystem::exists("PortableGit")) {
-                    command = "PortableGit/bin/git.exe clone " + text + " repos/" + repoAuthor + "/" + repoName;
-                }
-                else {
-                    command = "git clone " + text + " repos/" + repoAuthor + "/" + repoName;
-                }
-
-                QProcess* process = new QProcess(newWindow);
-                process->startDetached(command);
-            }
-            else {
-                QMessageBox::warning(nullptr, QObject::tr("Oops"), QObject::tr("Incorrect link!"));
-            }
-            delay(1);
-            QProcess* process = new QProcess(newWindow);
-            QString command = "attrib - r /s /d repos\\" + repoAuthor + "\\" + repoName;
-            process->startDetached(command);
-            updateReposTable(mainList);
-        }
+    QMenu* cloneMenu = new QMenu(cloneButton);
+    QAction* enterManually = cloneMenu->addAction(QObject::tr("Enter Manually"));
+    QAction* fromClipboard = cloneMenu->addAction(QObject::tr("Paste from Clipboard"));
+    QObject::connect(enterManually, &QAction::triggered, [&, mainList]() {
+        urlManually(mainList);
     });
-    cloneButton->show();
+    QObject::connect(fromClipboard, &QAction::triggered, [&, mainList]() {
+        urlFromClipboard(mainList);
+    });
+    cloneButton->setMenu(cloneMenu);
+    cloneButton->setPopupMode(QToolButton::InstantPopup);
 
     QToolButton* removeButton = new QToolButton(mainWindow);
     removeButton->setText(QObject::tr("Remove Selected"));

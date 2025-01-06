@@ -13,11 +13,7 @@
 #include <QSettings>
 #include <QList>
 #include <QLabel>
-//#include <QListWidget>
 #include <QMediaPlayer>
-//#include <QVideoWidget>
-//#include <QMediaPlaylist>
-//#include <QFile>
 
 int main(int argc, char *argv[])
 {
@@ -56,7 +52,8 @@ int main(int argc, char *argv[])
     //run in Qt cmd after compile: windeployqt "path-to-nekosource.exe"
 
     //to generate lang: 
-    // 1. lupdate main.cpp headers\buttons.h headers\settings.h headers\settsButtons.h headers\settsWindow.h headers\reposList.h headers\about.h -ts translations/ru_RU.ts
-    // 2. linguist translations/ru_RU.ts
-    // 3. lrelease translations/ru_RU.ts
+    // 1. cd C:\Users\User\source\repos\NekoSource\NekoSource\src
+    // 2. lupdate main.cpp headers\buttons.h headers\settings.h headers\settsButtons.h headers\settsWindow.h headers\reposList.h headers\about.h headers\cloneButton.h -ts translations/ru_RU.ts
+    // 3. linguist translations/ru_RU.ts
+    // 4. lrelease translations/ru_RU.ts
 }

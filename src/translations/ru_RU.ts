@@ -83,5 +83,17 @@
         <source>Thanks for using NekoSource! ^^ || 2024-2025 TolyaGosuslugi</source>
         <translation>Спасибо, что используете NekoSource! ^^ || 2024-2025 TolyaGosuslugi</translation>
     </message>
+    <message>
+        <source>Enter Manually</source>
+        <translation>Ввести вручную</translation>
+    </message>
+    <message>
+        <source>Paste from Clipboard</source>
+        <translation>Вставить из буфера обмена</translation>
+    </message>
+    <message>
+        <source>There is no link in the clipboard!</source>
+        <translation>В буфере обмена нет ссылки!</translation>
+    </message>
 </context>
 </TS>
