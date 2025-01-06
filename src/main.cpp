@@ -13,7 +13,11 @@
 #include <QSettings>
 #include <QList>
 #include <QLabel>
-#include <QListWidget>
+//#include <QListWidget>
+#include <QMediaPlayer>
+//#include <QVideoWidget>
+//#include <QMediaPlaylist>
+//#include <QFile>
 
 int main(int argc, char *argv[])
 {
@@ -31,8 +35,14 @@ int main(int argc, char *argv[])
     QString lang = settings.value("lang", "en_US").toString();
     QTranslator translator;
     a.removeTranslator(&translator);
-    translator.load(":/NekoSource/translations/" + lang + ".qm");
+    translator.load(":/translations/" + lang + ".qm");
     a.installTranslator(&translator);
+
+    QMediaPlayer* player = new QMediaPlayer();
+    player->setMedia(QUrl("qrc:/audio/bgm.mp3"));
+    //player->setMedia(QUrl("file:///C:/Users/User/Downloads/bgm.it"));
+    player->setVolume(10);
+    player->play();
 
     butts(mainWindw, a); // [buttons.h] Create Buttons in Main Window || [reposList.h] Show List of repos
 

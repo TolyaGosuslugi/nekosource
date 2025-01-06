@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/NekoSource">
+    <qresource prefix="/">
         <file>translations/ru_RU.qm</file>
         <file>img/download-uni.svg</file>
         <file>img/plus-uni.svg</file>
@@ -7,5 +7,7 @@
         <file>img/settings-uni.svg</file>
         <file>img/trash-uni.svg</file>
         <file>img/info-uni.svg</file>
+        <file>img/video_2025-01-06_13-55-33.mp4</file>
+        <file>audio/bgm.mp3</file>
     </qresource>
 </RCC>

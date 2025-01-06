@@ -27,8 +27,6 @@
 #include <QTableWidget>
 #include <QHeaderView>
 #include <QModelIndexList>
-#include <QDir>
-#include <QIODevice>
 QSize iconSize = QSize(25, 25);
 
 void butts(QWidget* mainWindow, QApplication& a) {
@@ -45,7 +43,7 @@ void butts(QWidget* mainWindow, QApplication& a) {
 
     QToolButton* refreshButton = new QToolButton(mainWindow);
     refreshButton->setText(QObject::tr("Refresh"));
-    refreshButton->setIcon(QIcon(":/NekoSource/img/refresh-uni.svg"));
+    refreshButton->setIcon(QIcon(":/img/refresh-uni.svg"));
     refreshButton->setIconSize(iconSize);
     refreshButton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
     QObject::connect(refreshButton, &QToolButton::clicked, [&, mainList]() {
@@ -57,7 +55,7 @@ void butts(QWidget* mainWindow, QApplication& a) {
 
     QToolButton* cloneButton = new QToolButton(mainWindow);
     cloneButton->setText(QObject::tr("Clone Repository"));
-    cloneButton->setIcon(QIcon(":/NekoSource/img/download-uni.svg"));
+    cloneButton->setIcon(QIcon(":/img/download-uni.svg"));
     cloneButton->setIconSize(iconSize);
     cloneButton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
     QObject::connect(cloneButton, &QToolButton::clicked, [&, mainList]() {
@@ -109,7 +107,7 @@ void butts(QWidget* mainWindow, QApplication& a) {
 
     QToolButton* removeButton = new QToolButton(mainWindow);
     removeButton->setText(QObject::tr("Remove Selected"));
-    removeButton->setIcon(QIcon(":/NekoSource/img/trash-uni.svg"));
+    removeButton->setIcon(QIcon(":/img/trash-uni.svg"));
     removeButton->setIconSize(iconSize);
     removeButton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
     QObject::connect(removeButton, &QToolButton::clicked, [&, mainList, mainWindow]() {
@@ -125,25 +123,10 @@ void butts(QWidget* mainWindow, QApplication& a) {
             if (areYouSure == QMessageBox::Yes) {
                 QString path = pathItem->text();
                 QString command = "rmdir /s /q " + path;
-                //QProcess* process = new QProcess(mainWindow);
-                //process->startDetached(command);
                 std::system(command.toStdString().c_str());
 
                 delay(1);
                 updateReposTable(mainList);
-
-                /* try {
-                    //QProcess* process = new QProcess(mainWindow);
-                    QString command = "rmdir /s /q " + path;
-                    //process->startDetached(command);
-                    std::system(command.toStdString().c_str());
-
-                    delay(1);
-                    updateReposTable(mainList);
-                }
-                catch (const std::exception& e) {
-                    QMessageBox::information(nullptr, QObject::tr("Error"), QObject::tr(e.what()));
-                } */
             }
         }
         else {
@@ -157,7 +140,7 @@ void butts(QWidget* mainWindow, QApplication& a) {
 
     QToolButton* settingsButton = new QToolButton(mainWindow);
     settingsButton->setText(QObject::tr("Settings"));
-    settingsButton->setIcon(QIcon(":/NekoSource/img/settings-uni.svg"));
+    settingsButton->setIcon(QIcon(":/img/settings-uni.svg"));
     settingsButton->setIconSize(iconSize);
     settingsButton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
     QObject::connect(settingsButton, &QToolButton::clicked, [&]() {
@@ -167,7 +150,7 @@ void butts(QWidget* mainWindow, QApplication& a) {
 
     QToolButton* aboutButton = new QToolButton(mainWindow);
     aboutButton->setText(QObject::tr("About"));
-    aboutButton->setIcon(QIcon(":/NekoSource/img/info-uni.svg"));
+    aboutButton->setIcon(QIcon(":/img/info-uni.svg"));
     aboutButton->setIconSize(iconSize);
     aboutButton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
     QObject::connect(aboutButton, &QToolButton::clicked, [&]() {

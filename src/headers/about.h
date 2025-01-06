@@ -6,7 +6,7 @@
 
 void showAboutWindow() {
 	QWidget* aboutWind = new QWidget();
-	aboutWind->setMinimumSize(500, 350);
+	aboutWind->setMinimumSize(500, 250);
 	aboutWind->setWindowTitle(QObject::tr("Thanks for using NekoSource! ^^ || 2024-2025 TolyaGosuslugi"));
 
 	QLabel* mainLabel = new QLabel(aboutWind);
