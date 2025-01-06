@@ -14,6 +14,7 @@
 #include <QList>
 #include <QLabel>
 #include <QMediaPlayer>
+#include <QMediaPlaylist>
 
 int main(int argc, char *argv[])
 {
@@ -34,11 +35,13 @@ int main(int argc, char *argv[])
     translator.load(":/translations/" + lang + ".qm");
     a.installTranslator(&translator);
 
-    QMediaPlayer* player = new QMediaPlayer();
-    player->setMedia(QUrl("qrc:/audio/bgm.mp3"));
-    //player->setMedia(QUrl("file:///C:/Users/User/Downloads/bgm.it"));
-    player->setVolume(10);
-    player->play();
+    QMediaPlaylist* playlist = new QMediaPlaylist();
+    playlist->addMedia(QUrl("qrc:/audio/bgm.mp3"));
+    playlist->setPlaybackMode(QMediaPlaylist::Loop);
+    QMediaPlayer* music = new QMediaPlayer();
+    music->setPlaylist(playlist);
+    music->setVolume(15);
+    music->play();
 
     butts(mainWindw, a); // [buttons.h] Create Buttons in Main Window || [reposList.h] Show List of repos
 
