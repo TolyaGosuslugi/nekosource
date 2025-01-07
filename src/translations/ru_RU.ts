@@ -60,10 +60,6 @@
         <translation>Вы уверены?</translation>
     </message>
     <message>
-        <source>Error</source>
-        <translation type="vanished">Ошибка</translation>
-    </message>
-    <message>
         <source>No row selected!</source>
         <translation>Ни одна строчка не выбрана!</translation>
     </message>
@@ -94,6 +90,18 @@
     <message>
         <source>There is no link in the clipboard!</source>
         <translation>В буфере обмена нет ссылки!</translation>
+    </message>
+    <message>
+        <source>Open in</source>
+        <translation>Открыть в</translation>
+    </message>
+    <message>
+        <source>Explorer</source>
+        <translation>Проводнике</translation>
+    </message>
+    <message>
+        <source>CMD</source>
+        <translation>Командной строке</translation>
     </message>
 </context>
 </TS>

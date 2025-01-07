@@ -4,6 +4,7 @@
 #include "reposList.h"
 #include "about.h"
 #include "cloneButton.h"
+#include "openIn.h"
 #include <iostream>
 #include <filesystem>
 #include <QtWidgets/QApplication>
@@ -21,6 +22,7 @@
 #include <QMessageBox>
 #include <QProcess>
 #include <QSet>
+#include <QDir>
 #include <QString>
 #include <QTranslator>
 #include <QHBoxLayout>
@@ -64,13 +66,32 @@ void butts(QWidget* mainWindow, QApplication& a) {
     QAction* enterManually = cloneMenu->addAction(QObject::tr("Enter Manually"));
     QAction* fromClipboard = cloneMenu->addAction(QObject::tr("Paste from Clipboard"));
     QObject::connect(enterManually, &QAction::triggered, [&, mainList]() {
-        urlManually(mainList);
+        urlManually(mainList); // [cloneButton.h]
     });
     QObject::connect(fromClipboard, &QAction::triggered, [&, mainList]() {
-        urlFromClipboard(mainList);
+        urlFromClipboard(mainList); // [cloneButton.h]
     });
     cloneButton->setMenu(cloneMenu);
     cloneButton->setPopupMode(QToolButton::InstantPopup);
+
+    QToolButton* openInButton = new QToolButton(mainWindow);
+    openInButton->setText(QObject::tr("Open in"));
+    openInButton->setIcon(QIcon(":/img/external-link-uni.svg"));
+    openInButton->setIconSize(iconSize);
+    openInButton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+    QMenu* openInMenu = new QMenu(openInButton);
+    QAction* explorer = openInMenu->addAction(QObject::tr("Explorer"));
+    explorer->setIcon(QIcon(":/img/folder-uni.svg"));
+    QAction* cmd = openInMenu->addAction(QObject::tr("CMD"));
+    cmd->setIcon(QIcon(":/img/terminal-uni.svg"));
+    QObject::connect(explorer, &QAction::triggered, [&, mainList]() {
+        inExplorer(mainList); // [openIn.h]
+    });
+    QObject::connect(cmd, &QAction::triggered, [&, mainList]() {
+        inCMD(mainList); // [openIn.h]
+    });
+    openInButton->setMenu(openInMenu);
+    openInButton->setPopupMode(QToolButton::InstantPopup);
 
     QToolButton* removeButton = new QToolButton(mainWindow);
     removeButton->setText(QObject::tr("Remove Selected"));
@@ -128,6 +149,7 @@ void butts(QWidget* mainWindow, QApplication& a) {
     hLayout->addWidget(refreshButton);
     hLayout->addWidget(between);
     hLayout->addWidget(cloneButton);
+    hLayout->addWidget(openInButton);
     hLayout->addWidget(removeButton);
     hLayout->addWidget(between2);
     hLayout->addWidget(settingsButton);

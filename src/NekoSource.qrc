@@ -9,5 +9,8 @@
         <file>img/info-uni.svg</file>
         <file>img/video_2025-01-06_13-55-33.mp4</file>
         <file>audio/bgm.mp3</file>
+        <file>img/folder-uni.svg</file>
+        <file>img/terminal-uni.svg</file>
+        <file>img/external-link-uni.svg</file>
     </qresource>
 </RCC>

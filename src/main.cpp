@@ -35,6 +35,7 @@ int main(int argc, char *argv[])
     translator.load(":/translations/" + lang + ".qm");
     a.installTranslator(&translator);
 
+    // play background music
     QMediaPlaylist* playlist = new QMediaPlaylist();
     playlist->addMedia(QUrl("qrc:/audio/bgm.mp3"));
     playlist->setPlaybackMode(QMediaPlaylist::Loop);
@@ -56,7 +57,7 @@ int main(int argc, char *argv[])
 
     //to generate lang: 
     // 1. cd C:\Users\User\source\repos\NekoSource\NekoSource\src
-    // 2. lupdate main.cpp headers\buttons.h headers\settings.h headers\settsButtons.h headers\settsWindow.h headers\reposList.h headers\about.h headers\cloneButton.h -ts translations/ru_RU.ts
+    // 2. lupdate main.cpp headers\buttons.h headers\settings.h headers\settsButtons.h headers\settsWindow.h headers\reposList.h headers\about.h headers\cloneButton.h headers\openIn.h -ts translations/ru_RU.ts
     // 3. linguist translations/ru_RU.ts
     // 4. lrelease translations/ru_RU.ts
 }
