@@ -12,5 +12,6 @@
         <file>img/folder-uni.svg</file>
         <file>img/terminal-uni.svg</file>
         <file>img/external-link-uni.svg</file>
+        <file>img/globe-uni.svg</file>
     </qresource>
 </RCC>

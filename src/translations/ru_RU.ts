@@ -73,7 +73,7 @@
     </message>
     <message>
         <source>thanks for icons</source>
-        <translation>спасибо за иконки ;)</translation>
+        <translation>спасибо за иконки</translation>
     </message>
     <message>
         <source>Thanks for using NekoSource! ^^ || 2024-2025 TolyaGosuslugi</source>
@@ -102,6 +102,22 @@
     <message>
         <source>CMD</source>
         <translation>Командной строке</translation>
+    </message>
+    <message>
+        <source>Browser</source>
+        <translation>Браузере</translation>
+    </message>
+    <message>
+        <source>Color</source>
+        <translation>Цвет</translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <translation>ОК</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Отмена</translation>
     </message>
 </context>
 </TS>

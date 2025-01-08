@@ -40,6 +40,9 @@ void butts(QWidget* mainWindow, QApplication& a) {
     mainList->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
     mainList->setEditTriggers(QAbstractItemView::NoEditTriggers);
     showTableWidget(mainList);
+    //mainList->setAttribute(Qt::WA_TranslucentBackground);
+    //mainList->setStyleSheet("background: #68445A; border: none;");
+    // part of ChatGPt's showfall
 
     QVBoxLayout* mainLayout = new QVBoxLayout(mainWindow);
 
@@ -84,11 +87,16 @@ void butts(QWidget* mainWindow, QApplication& a) {
     explorer->setIcon(QIcon(":/img/folder-uni.svg"));
     QAction* cmd = openInMenu->addAction(QObject::tr("CMD"));
     cmd->setIcon(QIcon(":/img/terminal-uni.svg"));
+    QAction* browser = openInMenu->addAction(QObject::tr("Browser"));
+    browser->setIcon(QIcon(":/img/globe-uni.svg"));
     QObject::connect(explorer, &QAction::triggered, [&, mainList]() {
         inExplorer(mainList); // [openIn.h]
     });
     QObject::connect(cmd, &QAction::triggered, [&, mainList]() {
         inCMD(mainList); // [openIn.h]
+    });
+    QObject::connect(browser, &QAction::triggered, [&, mainList]() {
+        inBrowser(mainList); // [openIn.h]
     });
     openInButton->setMenu(openInMenu);
     openInButton->setPopupMode(QToolButton::InstantPopup);
