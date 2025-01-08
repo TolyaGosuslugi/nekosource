@@ -121,7 +121,7 @@
     </message>
     <message>
         <source>Cancel</source>
-        <translation>Відміна</translation>
+        <translation>Вiдмiнити</translation>
     </message>
 </context>
 </TS>
