@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="ru_RU">
+<TS version="2.1" language="uk_UA">
 <context>
     <name>QObject</name>
     <message>
         <source>Clone Repository</source>
-        <translation>Клонировать репозиторий</translation>
+        <translation>Склонувати репозиторій</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation>Настройки</translation>
+        <translation>Налаштування</translation>
     </message>
     <message>
         <source>Enter repository link:</source>
-        <translation>Введите ссылку на репозиторию:</translation>
+        <translation>Напишіть посилання на репозиторій:</translation>
     </message>
     <message>
         <source>Incorrect link!</source>
-        <translation>Неверная ссылка!</translation>
+        <translation>Невірне посилання!</translation>
     </message>
     <message>
         <source>Language</source>
-        <translation>Язык</translation>
+        <translation>Мова</translation>
     </message>
     <message>
         <source>Restart the program to take effect.</source>
-        <translation>Перезапустите программу для применения изменений.</translation>
+        <translation>Перезапустіть программу для застосування.</translation>
     </message>
     <message>
         <source>Theme</source>
@@ -37,11 +37,11 @@
     </message>
     <message>
         <source>Link</source>
-        <translation>Ссылка</translation>
+        <translation>Посилання</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>Обновить</translation>
+        <translation>Обновіть</translation>
     </message>
     <message>
         <source>Oops</source>
@@ -49,7 +49,7 @@
     </message>
     <message>
         <source>Remove Selected</source>
-        <translation>Удалить</translation>
+        <translation>Видалити</translation>
     </message>
     <message>
         <source>Wait</source>
@@ -57,71 +57,71 @@
     </message>
     <message>
         <source>Are you sure?</source>
-        <translation>Вы уверены?</translation>
+        <translation>Ви впевнені?</translation>
     </message>
     <message>
         <source>No row selected!</source>
-        <translation>Ни одна строчка не выбрана!</translation>
+        <translation>Ні одна стрічка не вибрана!</translation>
     </message>
     <message>
         <source>About</source>
-        <translation>О софте</translation>
+        <translation>Про программу</translation>
     </message>
     <message>
         <source>main code, russian translation</source>
-        <translation>основной код, перевод на русский</translation>
-    </message>
-    <message>
-        <source>thanks for icons</source>
-        <translation>спасибо за иконки</translation>
-    </message>
-    <message>
-        <source>Thanks for using NekoSource! ^^ || 2024-2025 TolyaGosuslugi</source>
-        <translation>Спасибо, что используете NekoSource! ^^ || 2024-2025 TolyaGosuslugi</translation>
-    </message>
-    <message>
-        <source>Enter Manually</source>
-        <translation>Ввести вручную</translation>
-    </message>
-    <message>
-        <source>Paste from Clipboard</source>
-        <translation>Вставить из буфера обмена</translation>
-    </message>
-    <message>
-        <source>There is no link in the clipboard!</source>
-        <translation>В буфере обмена нет ссылки!</translation>
-    </message>
-    <message>
-        <source>Open in</source>
-        <translation>Открыть в</translation>
-    </message>
-    <message>
-        <source>Explorer</source>
-        <translation>Проводнике</translation>
-    </message>
-    <message>
-        <source>CMD</source>
-        <translation>Командной строке</translation>
-    </message>
-    <message>
-        <source>Browser</source>
-        <translation>Браузере</translation>
-    </message>
-    <message>
-        <source>Color</source>
-        <translation>Цвет</translation>
-    </message>
-    <message>
-        <source>OK</source>
-        <translation>ОК</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>Отмена</translation>
+        <translation>основний код, перекладено на російською</translation>
     </message>
     <message>
         <source>ukrainian translation</source>
-        <translation>перевод на украинский</translation>
+        <translation>перекладено на українську</translation>
+    </message>
+    <message>
+        <source>thanks for icons</source>
+        <translation>дякую за іконки</translation>
+    </message>
+    <message>
+        <source>Thanks for using NekoSource! ^^ || 2024-2025 TolyaGosuslugi</source>
+        <translation>Дякую, що використовуєте NekoSource! ^^ || 2024-2025 TolyaGosuslugi</translation>
+    </message>
+    <message>
+        <source>Enter Manually</source>
+        <translation>Ввести вручну</translation>
+    </message>
+    <message>
+        <source>Paste from Clipboard</source>
+        <translation>Вставити з буфера обміна</translation>
+    </message>
+    <message>
+        <source>There is no link in the clipboard!</source>
+        <translation>В буфері обміни немає посилання!</translation>
+    </message>
+    <message>
+        <source>Open in</source>
+        <translation>Відкрити в</translation>
+    </message>
+    <message>
+        <source>Explorer</source>
+        <translation>Провіднику</translation>
+    </message>
+    <message>
+        <source>CMD</source>
+        <translation>Комманій стрічці</translation>
+    </message>
+    <message>
+        <source>Browser</source>
+        <translation>Браузері</translation>
+    </message>
+    <message>
+        <source>Color</source>
+        <translation>Колір</translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <translation>Добре</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Відміна</translation>
     </message>
 </context>
 </TS>

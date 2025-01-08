@@ -25,6 +25,13 @@ void showAboutWindow() {
 	tolyagosuslugi->setTextInteractionFlags(Qt::TextBrowserInteraction);
 	tolyagosuslugi->setOpenExternalLinks(true);
 	tolyagosuslugi->show();
+	QLabel* shadowcj = new QLabel(aboutWind);
+	shadowcj->setText("<a href=\"https://github.com/bluzetX\">shadowcj</a> - " + QObject::tr("ukrainian translation"));
+	shadowcj->setStyleSheet(QString("font-size: 14px").arg(32));
+	shadowcj->setTextFormat(Qt::RichText);
+	shadowcj->setTextInteractionFlags(Qt::TextBrowserInteraction);
+	shadowcj->setOpenExternalLinks(true);
+	shadowcj->show();
 
 	QLabel* iconsSource = new QLabel(aboutWind);
 	iconsSource->setText("<a href=\"https://feathericons.com/\">feathericons.com</a> - " + QObject::tr("thanks for icons"));
@@ -36,6 +43,7 @@ void showAboutWindow() {
 
 	mainBox->addWidget(mainLabel);
 	mainBox->addWidget(tolyagosuslugi);
+	mainBox->addWidget(shadowcj);
 	mainBox->addWidget(iconsSource);
 	mainBox->setAlignment(Qt::AlignTop);
 

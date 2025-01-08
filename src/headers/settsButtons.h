@@ -32,7 +32,7 @@ void settsbutts(QWidget* settsWind, QApplication& a) {
     langButton->setText(lng);
 
     QMenu* lngMenu = new QMenu(langButton);
-    QStringList languages = {"en_US", "ru_RU"};
+    QStringList languages = {"en_US", "ru_RU", "uk_UA"};
     for (const QString& lang : languages) {
         QAction* action = lngMenu->addAction(lang);
         QObject::connect(action, &QAction::triggered, [lang, langButton]() {

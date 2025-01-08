@@ -13,5 +13,6 @@
         <file>img/terminal-uni.svg</file>
         <file>img/external-link-uni.svg</file>
         <file>img/globe-uni.svg</file>
+        <file>translations/uk_UA.qm</file>
     </qresource>
 </RCC>
