@@ -79,7 +79,7 @@
     </message>
     <message>
         <source>thanks for icons</source>
-        <translation>дякую за іконки</translation>
+        <translation>дякуємо за іконки</translation>
     </message>
     <message>
         <source>Thanks for using NekoSource! ^^ || 2024-2025 TolyaGosuslugi</source>
