@@ -69,6 +69,7 @@
     </message>
     <message>
         <source>main code, russian translation</source>
+        <translatorcomment>tolyagosuslugi (check about)</translatorcomment>
         <translation>основной код, перевод на русский</translation>
     </message>
     <message>
@@ -121,7 +122,43 @@
     </message>
     <message>
         <source>ukrainian translation</source>
+        <translatorcomment>bluzetX(check About)</translatorcomment>
         <translation>перевод на украинский</translation>
+    </message>
+    <message>
+        <source>belarusian translation</source>
+        <translatorcomment>semkapc(Check About)</translatorcomment>
+        <translation>перевод на беларусский</translation>
+    </message>
+    <message>
+        <source>Push Changes</source>
+        <translation>Опубликовать изменения</translation>
+    </message>
+    <message>
+        <source>Process Running</source>
+        <translation>Процесс запущен</translation>
+    </message>
+    <message>
+        <source>The process is running...</source>
+        <translation>Процесс выполняется...</translation>
+    </message>
+    <message>
+        <source>Cloning Finished</source>
+        <translation>Клонирование завершено</translation>
+    </message>
+    <message>
+        <source>The repository has been successfully cloned.</source>
+        <translation>Репозитория успешно клонирована.</translation>
+    </message>
+    <message>
+        <source>The repository was not found. Please check the link.</source>
+        <translation>Репозитория не найдена. Пожалуйста, проверьте ссылку.</translation>
+    </message>
+    <message>
+        <source>Cloning the repository failed with an error:
+%1</source>
+        <translation>Клонирование завершено с ошибкой:
+%1</translation>
     </message>
 </context>
 </TS>

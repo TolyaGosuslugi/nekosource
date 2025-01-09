@@ -69,10 +69,12 @@
     </message>
     <message>
         <source>main code, russian translation</source>
+        <translatorcomment>tolyagosuslugi (check about)</translatorcomment>
         <translation>основний код, перекладено на російською</translation>
     </message>
     <message>
         <source>ukrainian translation</source>
+        <translatorcomment>bluzetX(check About)</translatorcomment>
         <translation>перекладено на українську</translation>
     </message>
     <message>
@@ -122,6 +124,41 @@
     <message>
         <source>Cancel</source>
         <translation>Вiдмiнити</translation>
+    </message>
+    <message>
+        <source>belarusian translation</source>
+        <translatorcomment>semkapc(Check About)</translatorcomment>
+        <translation>переклад на білоруську мову</translation>
+    </message>
+    <message>
+        <source>Push Changes</source>
+        <translation>Опублікувати зміни</translation>
+    </message>
+    <message>
+        <source>Process Running</source>
+        <translation>Процес запущений</translation>
+    </message>
+    <message>
+        <source>The process is running...</source>
+        <translation>Процес розпочатий...</translation>
+    </message>
+    <message>
+        <source>Cloning Finished</source>
+        <translation>Клонування завершено</translation>
+    </message>
+    <message>
+        <source>The repository has been successfully cloned.</source>
+        <translation>Репозіторій був успішно слонований.</translation>
+    </message>
+    <message>
+        <source>The repository was not found. Please check the link.</source>
+        <translation>Репозіторій був не найдений, будь ластка перевірте посилання.</translation>
+    </message>
+    <message>
+        <source>Cloning the repository failed with an error:
+%1</source>
+        <translation>Клонування репозіторію не вдалося з помилкою:
+%1</translation>
     </message>
 </context>
 </TS>

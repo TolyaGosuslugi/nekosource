@@ -67,7 +67,7 @@ int main(int argc, char *argv[])
 
     //для обновы языка: 
     // 1. cd C:\Users\User\source\repos\NekoSource\NekoSource\src
-    // 2. lupdate main.cpp headers\buttons.h headers\settings.h headers\settsButtons.h headers\settsWindow.h headers\reposList.h headers\about.h headers\cloneButton.h headers\openIn.h -ts translations/ru_RU.ts
+    // 2. lupdate main.cpp headers\buttons.h headers\settings.h headers\settsButtons.h headers\settsWindow.h headers\reposList.h headers\about.h headers\cloneButton.h headers\openIn.h headers\commitButton.h -ts translations/ru_RU.ts
     // 3. linguist translations/ru_RU.ts
     // 4. lrelease translations/ru_RU.ts
 }

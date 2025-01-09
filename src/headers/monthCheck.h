@@ -1,4 +1,5 @@
-﻿#include <QDate>
+﻿#pragma once
+#include <QDate>
 
 QString getMonthTheme() {
     QDate currentDate = QDate::currentDate();

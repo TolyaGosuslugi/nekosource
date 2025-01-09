@@ -5,6 +5,7 @@
 #include "about.h"
 #include "cloneButton.h"
 #include "openIn.h"
+#include "commitButton.h"
 #include <iostream>
 #include <filesystem>
 #include <QtWidgets/QApplication>
@@ -76,6 +77,15 @@ void butts(QWidget* mainWindow, QApplication& a) {
     });
     cloneButton->setMenu(cloneMenu);
     cloneButton->setPopupMode(QToolButton::InstantPopup);
+
+    QToolButton* commitButton = new QToolButton(mainWindow);
+    commitButton->setText(QObject::tr("Push Changes"));
+    commitButton->setIcon(QIcon(":/img/upload-cloud-uni.svg"));
+    commitButton->setIconSize(iconSize);
+    commitButton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+    QObject::connect(commitButton, &QToolButton::triggered, [&, mainList]() {
+        commitChanges(mainList); // [commitButton.h]
+    });
 
     QToolButton* openInButton = new QToolButton(mainWindow);
     openInButton->setText(QObject::tr("Open in"));
@@ -157,6 +167,7 @@ void butts(QWidget* mainWindow, QApplication& a) {
     hLayout->addWidget(refreshButton);
     hLayout->addWidget(between);
     hLayout->addWidget(cloneButton);
+    hLayout->addWidget(commitButton);
     hLayout->addWidget(openInButton);
     hLayout->addWidget(removeButton);
     hLayout->addWidget(between2);
