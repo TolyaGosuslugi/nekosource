@@ -83,7 +83,7 @@ void butts(QWidget* mainWindow, QApplication& a) {
     commitButton->setIcon(QIcon(":/img/upload-cloud-uni.svg"));
     commitButton->setIconSize(iconSize);
     commitButton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-    QObject::connect(commitButton, &QToolButton::triggered, [&, mainList]() {
+    QObject::connect(commitButton, &QToolButton::clicked, [&, mainList]() {
         commitChanges(mainList); // [commitButton.h]
     });
 
