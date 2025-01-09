@@ -31,8 +31,8 @@ void loadSettings(QApplication &a) {
 
 	// set theme from regedit
     if (theme == "dark") {
+	iconTheme = "light";
         if (color == "default") {
-            iconTheme = "light";
             QPalette p = a.palette();
             p.setColor(QPalette::Window, QColor(53, 53, 53));
             p.setColor(QPalette::Button, QColor(53, 53, 53));
@@ -45,7 +45,6 @@ void loadSettings(QApplication &a) {
             a.setPalette(p);
         }
         else if (color == "pink") {
-            iconTheme = "light";
             QPalette p = a.palette();
             p.setColor(QPalette::Window, QColor(54, 33, 52));
             p.setColor(QPalette::Button, QColor(88, 48, 72));
@@ -58,7 +57,6 @@ void loadSettings(QApplication &a) {
             a.setPalette(p);
         }
         else if (color == "blue") {
-            iconTheme = "light";
             QPalette p = a.palette();
             p.setColor(QPalette::Window, QColor(30, 34, 58));
             p.setColor(QPalette::Button, QColor(45, 50, 80));
@@ -71,7 +69,6 @@ void loadSettings(QApplication &a) {
             a.setPalette(p);
         }
         else if (color == "green") {
-            iconTheme = "light";
             QPalette p = a.palette();
             p.setColor(QPalette::Window, QColor(25, 45, 35));
             p.setColor(QPalette::Button, QColor(40, 60, 50));
@@ -85,8 +82,8 @@ void loadSettings(QApplication &a) {
         }
     }
     else if (theme == "light") {
+	iconTheme = "dark";
         if (color == "default") {
-            iconTheme = "dark";
             QPalette p = a.palette();
             p.setColor(QPalette::Window, QColor(240, 240, 240));
             p.setColor(QPalette::Button, QColor(246, 246, 246));
@@ -99,7 +96,6 @@ void loadSettings(QApplication &a) {
             a.setPalette(p);
         }
         else if (color == "pink") {
-            iconTheme = "dark";
             QPalette p = a.palette();
             p.setColor(QPalette::Window, QColor(255, 230, 240));
             p.setColor(QPalette::Button, QColor(255, 210, 225));
@@ -112,7 +108,6 @@ void loadSettings(QApplication &a) {
             a.setPalette(p);
         }
         else if (color == "blue") {
-            iconTheme = "dark";
             QPalette p = a.palette();
             p.setColor(QPalette::Window, QColor(220, 230, 255));
             p.setColor(QPalette::Button, QColor(190, 210, 250));
@@ -125,7 +120,6 @@ void loadSettings(QApplication &a) {
             a.setPalette(p);
         }
         else if (color == "green") {
-            iconTheme = "light";
             QPalette p = a.palette();
             p.setColor(QPalette::Window, QColor(220, 255, 240));
             p.setColor(QPalette::Button, QColor(190, 240, 210));

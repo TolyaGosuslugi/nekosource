@@ -42,7 +42,7 @@ void butts(QWidget* mainWindow, QApplication& a) {
     showTableWidget(mainList);
     //mainList->setAttribute(Qt::WA_TranslucentBackground);
     //mainList->setStyleSheet("background: #68445A; border: none;");
-    // part of ChatGPt's showfall
+    // часть кода снегопада от ChatGPT
 
     QVBoxLayout* mainLayout = new QVBoxLayout(mainWindow);
 
@@ -54,7 +54,7 @@ void butts(QWidget* mainWindow, QApplication& a) {
     refreshButton->setIconSize(iconSize);
     refreshButton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
     QObject::connect(refreshButton, &QToolButton::clicked, [&, mainList]() {
-        updateReposTable(mainList);
+        updateReposTable(mainList); // [reposList.h]
     });
     refreshButton->show();
 

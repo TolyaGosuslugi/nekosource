@@ -25,7 +25,77 @@
 #include <QHeaderView>
 #include <QModelIndexList>
 #include <QClipboard>
+#include <QMimeData>
+#include <qDebug>
 
+///////////    Воиды, чтоб основные выглядели проще    ///////////
+
+void startCloneManually(QWidget* newWindow, QString& command) {
+    QMessageBox* notification = new QMessageBox(newWindow);
+    notification->setWindowTitle(QObject::tr("Process Running"));
+    notification->setText(QObject::tr("The process is running..."));
+    notification->setStandardButtons(QMessageBox::NoButton);
+    notification->setModal(true);
+    notification->show();
+
+    QProcess* process = new QProcess(newWindow);
+    QObject::connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), [notification, process](int exitCode, QProcess::ExitStatus exitStatus) {
+        notification->close();
+        notification->deleteLater();
+
+        QByteArray errorOutput = process->readAllStandardError();
+        QString errorMessage = QString::fromUtf8(errorOutput).trimmed();
+
+        if (exitStatus == QProcess::NormalExit && exitCode == 0) {
+            QMessageBox::information(nullptr, QObject::tr("Cloning Finished"), QObject::tr("The repository has been successfully cloned."));
+        }
+        else if (errorMessage.contains("repository not found", Qt::CaseInsensitive)) {
+            QMessageBox::warning(nullptr, QObject::tr("Oops"), QObject::tr("The repository was not found. Please check the link."));
+        }
+        else {
+            QMessageBox::critical(nullptr, QObject::tr("Oops"), QObject::tr("Cloning the repository failed with an error:\n%1").arg(errorMessage));
+        }
+
+        process->deleteLater();
+        });
+
+    process->start(command);
+}
+
+void startCloneClipboard(QString& command) {
+    QMessageBox* notification = new QMessageBox();
+    notification->setWindowTitle(QObject::tr("Process Running"));
+    notification->setText(QObject::tr("The process is running..."));
+    notification->setStandardButtons(QMessageBox::NoButton);
+    notification->setModal(true);
+    notification->show();
+
+    QProcess* process = new QProcess();
+    QObject::connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), [notification, process](int exitCode, QProcess::ExitStatus exitStatus) {
+        notification->close();
+        notification->deleteLater();
+
+        QByteArray errorOutput = process->readAllStandardError();
+        QString errorMessage = QString::fromUtf8(errorOutput).trimmed();
+
+        if (exitStatus == QProcess::NormalExit && exitCode == 0) {
+            QMessageBox::information(nullptr, QObject::tr("Cloning Finished"), QObject::tr("The repository has been successfully cloned."));
+        }
+        else if (errorMessage.contains("repository not found", Qt::CaseInsensitive)) {
+            QMessageBox::warning(nullptr, QObject::tr("Oops"), QObject::tr("The repository was not found. Please check the link."));
+        }
+        else {
+            QMessageBox::critical(nullptr, QObject::tr("Oops"), QObject::tr("Cloning the repository failed with an error:\n%1").arg(errorMessage));
+        }
+
+        process->deleteLater();
+    });
+
+    process->start(command);
+
+}
+
+///////////    Основные фукнции    ///////////
 
 void urlManually(QTableWidget* mainList) {
     QWidget* newWindow = new QWidget();
@@ -59,23 +129,19 @@ void urlManually(QTableWidget* mainList) {
                 command = "git clone " + text + " repos/" + repoAuthor + "/" + repoName;
             }
 
-            QProcess* process = new QProcess(newWindow);
-            process->startDetached(command);
+            startCloneManually(newWindow, command);
         }
         else {
             QMessageBox::warning(nullptr, QObject::tr("Oops"), QObject::tr("Incorrect link!"));
         }
         delay(1);
-        QProcess* process = new QProcess(newWindow);
-        QString command = "attrib - r /s /d repos\\" + repoAuthor + "\\" + repoName;
-        process->startDetached(command);
         updateReposTable(mainList);
     }
 }
 
 void urlFromClipboard(QTableWidget* mainList) {
     QInputDialog inputDialog;
-    QString text = QGuiApplication::clipboard()->text();
+    QString text = QGuiApplication::clipboard()->text().trimmed();
     if (!text.isEmpty()) {
         QString repoAuthor;
         QString repoName;
@@ -96,13 +162,15 @@ void urlFromClipboard(QTableWidget* mainList) {
                 command = "git clone " + text + " repos/" + repoAuthor + "/" + repoName;
             }
 
-            QProcess* process = new QProcess();
-            process->startDetached(command);
+            startCloneClipboard(command);
         }
         else {
             QMessageBox::warning(nullptr, QObject::tr("Oops"), QObject::tr("There is no link in the clipboard!"));
         }
         delay(1);
         updateReposTable(mainList);
+    }
+    else {
+        QMessageBox::warning(nullptr, QObject::tr("Oops"), QObject::tr("There is no link in the clipboard!"));
     }
 }
