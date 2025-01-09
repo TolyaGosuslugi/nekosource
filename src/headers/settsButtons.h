@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include "settings.h"
 #include <QComboBox>
 #include <QSettings>
@@ -25,7 +25,7 @@ void settsbutts(QWidget* settsWind, QApplication& a) {
     newColor = color;
     QVBoxLayout* mainLayout = new QVBoxLayout(settsWind);
 
-    // Язык
+    // РЇР·С‹Рє
     QHBoxLayout* langLayout = new QHBoxLayout();
     QLabel* langLabel = new QLabel(QObject::tr("Language"), settsWind);
     QToolButton* langButton = new QToolButton(settsWind);
@@ -47,7 +47,7 @@ void settsbutts(QWidget* settsWind, QApplication& a) {
     langLayout->setSpacing(5);
     langLayout->setAlignment(Qt::AlignLeft);
 
-    // Тема
+    // РўРµРјР°
     QHBoxLayout* thmLayout = new QHBoxLayout();
     QLabel* thmLabel = new QLabel(QObject::tr("Theme"), settsWind);
     QToolButton* thmButton = new QToolButton(settsWind);
@@ -69,7 +69,7 @@ void settsbutts(QWidget* settsWind, QApplication& a) {
     thmLayout->setSpacing(5);
     thmLayout->setAlignment(Qt::AlignLeft);
 
-    // Цветовая схема
+    // Р¦РІРµС‚РѕРІР°СЏ СЃС…РµРјР°
     QHBoxLayout* colorLayout = new QHBoxLayout();
     QLabel* colorLabel = new QLabel(QObject::tr("Color"), settsWind);
     QToolButton* colorButton = new QToolButton(settsWind);
@@ -91,7 +91,7 @@ void settsbutts(QWidget* settsWind, QApplication& a) {
     colorLayout->setSpacing(5);
     colorLayout->setAlignment(Qt::AlignLeft);
 
-    // Нижние кнопки
+    // РќРёР¶РЅРёРµ РєРЅРѕРїРєРё
     QVBoxLayout* buttsMain = new QVBoxLayout();
     QHBoxLayout* hButtons = new QHBoxLayout();
     QPushButton* ok = new QPushButton();

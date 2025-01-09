@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "settsButtons.h"
 #include <QComboBox>
 #include <QSettings>

@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include <QSettings>
 #include <QToolButton>
 #include <QTranslator>
@@ -24,7 +24,7 @@ QString iconTheme;
 // 08.01.2025 18:18 - now the theme changes after restart, the icon color can be changed according to the theme
 
 void loadSettings(QApplication &a) {
-	// проверка имеется ли папка для реп
+	// РїСЂРѕРІРµСЂРєР° РёРјРµРµС‚СЃСЏ Р»Рё РїР°РїРєР° РґР»СЏ СЂРµРї
 	if (!std::filesystem::exists("repos")) {
 		std::filesystem::create_directory("repos");
 	}

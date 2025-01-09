@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include "reposList.h"
 #include <iostream>
 #include <filesystem>
@@ -28,7 +28,7 @@
 #include <QMimeData>
 #include <qDebug>
 
-///////////    Воиды, чтоб основные выглядели проще    ///////////
+///////////    Р’РѕРёРґС‹, С‡С‚РѕР± РѕСЃРЅРѕРІРЅС‹Рµ РІС‹РіР»СЏРґРµР»Рё РїСЂРѕС‰Рµ    ///////////
 
 void startCloneManually(QWidget* newWindow, QString& command) {
     QMessageBox* notification = new QMessageBox(newWindow);
@@ -95,7 +95,7 @@ void startCloneClipboard(QString& command) {
 
 }
 
-///////////    Основные фукнции    ///////////
+///////////    РћСЃРЅРѕРІРЅС‹Рµ С„СѓРєРЅС†РёРё    ///////////
 
 void urlManually(QTableWidget* mainList) {
     QWidget* newWindow = new QWidget();

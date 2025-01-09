@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include "settings.h"
 #include "settsWindow.h"
 #include "reposList.h"
@@ -42,7 +42,7 @@ void butts(QWidget* mainWindow, QApplication& a) {
     showTableWidget(mainList);
     //mainList->setAttribute(Qt::WA_TranslucentBackground);
     //mainList->setStyleSheet("background: #68445A; border: none;");
-    // часть кода снегопада от ChatGPT
+    // С‡Р°СЃС‚СЊ РєРѕРґР° СЃРЅРµРіРѕРїР°РґР° РѕС‚ ChatGPT
 
     QVBoxLayout* mainLayout = new QVBoxLayout(mainWindow);
 
