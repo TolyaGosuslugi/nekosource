@@ -32,13 +32,13 @@ void showAboutWindow() {
 	shadowcj->setTextInteractionFlags(Qt::TextBrowserInteraction);
 	shadowcj->setOpenExternalLinks(true);
 	shadowcj->show();
-	QLabel* semkapc = new QLabel(aboutWind);
+	/* QLabel* semkapc = new QLabel(aboutWind);
 	semkapc->setText("<a href=\"https://github.com/semkapc\">semkapc</a> - " + QObject::tr("belarusian translation"));
 	semkapc->setStyleSheet(QString("font-size: 14px").arg(32));
 	semkapc->setTextFormat(Qt::RichText);
 	semkapc->setTextInteractionFlags(Qt::TextBrowserInteraction);
 	semkapc->setOpenExternalLinks(true);
-	semkapc->show();
+	semkapc->show(); */
 
 	QLabel* iconsSource = new QLabel(aboutWind);
 	iconsSource->setText("<a href=\"https://feathericons.com/\">feathericons.com</a> - " + QObject::tr("thanks for icons"));
@@ -51,7 +51,7 @@ void showAboutWindow() {
 	mainBox->addWidget(mainLabel);
 	mainBox->addWidget(tolyagosuslugi);
 	mainBox->addWidget(shadowcj);
-	mainBox->addWidget(semkapc);
+	//mainBox->addWidget(semkapc);
 	mainBox->addWidget(iconsSource);
 	mainBox->setAlignment(Qt::AlignTop);
 
