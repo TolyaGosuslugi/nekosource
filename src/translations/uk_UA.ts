@@ -53,7 +53,7 @@
     </message>
     <message>
         <source>Wait</source>
-        <translation>Секунду</translation>
+        <translation>Зачекайте</translation>
     </message>
     <message>
         <source>Are you sure?</source>
