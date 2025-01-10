@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include <QDir>
 #include <QTableWidget>
 
@@ -8,11 +8,11 @@ void commitChanges(QTableWidget* mainList) {
 
     if (!selectedIndexes.isEmpty()) {
         int row = selectedIndexes.first().row();
-        int column = 0; // Èç êîëîíêè "Ïóòü"
-        QTableWidgetItem* pathItem = mainList->item(row, column); // Ïîëó÷àåì (áëÿòü êàê ïåðåâîäèòüñÿ)
-        QDir baseDir = QDir::current(); //Ïîëó÷àåì äèðåêòîðèþ(where is nekosource.exe)
-        QString fullPath = baseDir.absoluteFilePath(pathItem->text()); // Ïîëó÷àåì ïîëíûé ïóòü ê nekosource.exe
-        fullPath.replace("/", "\\"); // çàìåíà åáàííûõ / íà \\
+        int column = 0; // Ð˜Ð· ÐºÐ¾Ð»Ð¾Ð½ÐºÐ¸ "ÐŸÑƒÑ‚ÑŒ"
+        QTableWidgetItem* pathItem = mainList->item(row, column); // ÐŸÐ¾Ð»ÑƒÑ‡Ð°ÐµÐ¼ (Ð±Ð»ÑÑ‚ÑŒ ÐºÐ°Ðº Ð¿ÐµÑ€ÐµÐ²Ð¾Ð´Ð¸Ñ‚ÑŒÑÑ)
+        QDir baseDir = QDir::current(); //ÐŸÐ¾Ð»ÑƒÑ‡Ð°ÐµÐ¼ Ð´Ð¸Ñ€ÐµÐºÑ‚Ð¾Ñ€Ð¸ÑŽ(where is nekosource.exe)
+        QString fullPath = baseDir.absoluteFilePath(pathItem->text()); // ÐŸÐ¾Ð»ÑƒÑ‡Ð°ÐµÐ¼ Ð¿Ð¾Ð»Ð½Ñ‹Ð¹ Ð¿ÑƒÑ‚ÑŒ Ðº nekosource.exe
+        fullPath.replace("/", "\\"); // Ð·Ð°Ð¼ÐµÐ½Ð° ÐµÐ±Ð°Ð½Ð½Ñ‹Ñ… / Ð½Ð° \\
 
         QString gitPath = "git";
         if (std::filesystem::exists("PortableGit")) {
@@ -22,7 +22,7 @@ void commitChanges(QTableWidget* mainList) {
         QProcess* process = new QProcess();
         process->setWorkingDirectory(fullPath);
         process->start(gitPath, QStringList() << "add" << "-A");
-        // äîáàâëåíèå íîâûõ ýëåìåíòîâ
+        // Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ Ð½Ð¾Ð²Ñ‹Ñ… ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð²
         
         QWidget* commitMessageWidget = new QWidget();
         QString commitMessageText;
