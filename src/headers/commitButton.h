@@ -9,9 +9,9 @@ void commitChanges(QTableWidget* mainList) {
     if (!selectedIndexes.isEmpty()) {
         int row = selectedIndexes.first().row();
         int column = 0; // Из колонки "Путь"
-        QTableWidgetItem* pathItem = mainList->item(row, column); // Получаем (блять как переводиться)
-        QDir baseDir = QDir::current(); //Получаем директорию(where is nekosource.exe)
-        QString fullPath = baseDir.absoluteFilePath(pathItem->text()); // Получаем полный путь к nekosource.exe
+        QTableWidgetItem* pathItem = mainList->item(row, column); // Получаем (блять как переводится item)
+        QDir baseDir = QDir::current(); //Получаем директорию(откуда запущен nekosource.exe)
+        QString fullPath = baseDir.absoluteFilePath(pathItem->text()); // получаем полный путь к выбранному объекту-репозиторию
         fullPath.replace("/", "\\"); // замена ебанных / на \\
 
         QString gitPath = "git";

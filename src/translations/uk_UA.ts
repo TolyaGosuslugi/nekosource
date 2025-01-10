@@ -128,7 +128,7 @@
     <message>
         <source>belarusian translation</source>
         <translatorcomment>semkapc(Check About)</translatorcomment>
-        <translation>переклад на білоруську мову</translation>
+        <translation type="vanished">переклад на білоруську мову</translation>
     </message>
     <message>
         <source>Push Changes</source>
@@ -159,6 +159,18 @@
 %1</source>
         <translation>Клонування репозіторію не вдалося з помилкою:
 %1</translation>
+    </message>
+    <message>
+        <source>Commit message</source>
+        <translation>І&apos;мя комміта</translation>
+    </message>
+    <message>
+        <source>Enter commit message:</source>
+        <translation>Введіть ім&apos;я комміта:</translation>
+    </message>
+    <message>
+        <source>Commit message cannot be empty!</source>
+        <translation>Ім&apos;я комміта не має будти пустим!</translation>
     </message>
 </context>
 </TS>
