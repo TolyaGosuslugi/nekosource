@@ -29,9 +29,22 @@
 #include <QMimeData>
 #include <qDebug>
 
+///////////    Гит    ///////////
+
+QString gitPath() {
+    QDir baseDir = QDir::current();
+    QString fullPath = baseDir.absoluteFilePath("PortableGit");
+    if (std::filesystem::exists(fullPath.toStdString())) {
+        return fullPath + "/bin/git.exe";
+    }
+    else {
+        return "git";
+    }
+}
+
 ///////////    Функция клона    ///////////
 
-void clone(QString& command) {//, QString& fullPath, QString& gitPath) {
+void clone(QString& command, QString& fullPath) {
     QMessageBox* notification = new QMessageBox();
     notification->setWindowTitle(QObject::tr("Process Running"));
     notification->setText(QObject::tr("The process is running..."));
@@ -40,7 +53,7 @@ void clone(QString& command) {//, QString& fullPath, QString& gitPath) {
     notification->show();
 
     QProcess* process = new QProcess();
-    QObject::connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), [notification, process](int exitCode, QProcess::ExitStatus exitStatus) {
+    QObject::connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), [notification, process, fullPath](int exitCode, QProcess::ExitStatus exitStatus) {
         notification->close();
         notification->deleteLater();
 
@@ -54,11 +67,12 @@ void clone(QString& command) {//, QString& fullPath, QString& gitPath) {
             QMessageBox::warning(nullptr, QObject::tr("Oops"), QObject::tr("The repository was not found. Please check the link."));
         }
         else if (errorMessage.contains("already exists and is not an empty directory.", Qt::CaseInsensitive)) {
-        //    QProcess* gitPull = new QProcess();
-        //    gitPull->setWorkingDirectory(fullPath);
-        //    gitPull->start(gitPath, QStringList() << "pull");
+            QProcess* gitPull = new QProcess();
+            gitPull->setWorkingDirectory(fullPath);
+            gitPull->start(gitPath(), QStringList() << "pull");
+            gitPull->waitForFinished();
 
-        //    QMessageBox::information(nullptr, QObject::tr("Cloning Finished"), QObject::tr("The repository has been successfully cloned."));
+            QMessageBox::information(nullptr, QObject::tr("Cloning Finished"), QObject::tr("The repository has been successfully cloned."));
         }
         else {
             QMessageBox::critical(nullptr, QObject::tr("Oops"), QObject::tr("Cloning the repository failed with an error:\n%1").arg(errorMessage));
@@ -75,16 +89,6 @@ void clone(QString& command) {//, QString& fullPath, QString& gitPath) {
 void urlManually(QTableWidget* mainList) {
     QWidget* newWindow = new QWidget();
     newWindow->setAttribute(Qt::WA_DeleteOnClose);
-
-    QItemSelectionModel* selectionModel = mainList->selectionModel();
-    QModelIndexList selectedIndexes = selectionModel->selectedIndexes();
-    int row = selectedIndexes.first().row();
-    int column = 0; // Из колонки "Путь"
-    QTableWidgetItem* pathItem = mainList->item(row, column);
-    QDir baseDir = QDir::current(); //Получаем директорию(откуда запущен nekosource.exe)
-    QMessageBox::warning(nullptr, QObject::tr("Oops"), baseDir.absoluteFilePath(pathItem->text()));
-    QString fullPath = baseDir.absoluteFilePath("/repos/tolyagosuslugi/ns-commit-test");
-    //fullPath = baseDir.absoluteFilePath(pathItem->text());
 
     QInputDialog inputDialog;
     bool ok;
@@ -107,20 +111,12 @@ void urlManually(QTableWidget* mainList) {
             QString repoName = parts[4];
             QString command;
 
-            if (std::filesystem::exists("PortableGit")) {
-                command = "PortableGit/bin/git.exe clone " + text + " repos/" + repoAuthor + "/" + repoName;
-            }
-            else {
-                command = "git clone " + text + " repos/" + repoAuthor + "/" + repoName;
-            }
+            command = gitPath() + " clone " + text + " repos/" + repoAuthor + "/" + repoName;
 
-            //QString gitPath = "git";
-            //if (std::filesystem::exists("PortableGit")) {
-            //    gitPath = baseDir.absolutePath() + "/PortableGit/bin/git.exe";
-            //}
+            QDir baseDir = QDir::current();
+            QString fullPath = baseDir.absoluteFilePath("repos/"+repoAuthor + "/" + repoName);
 
-            //clone(command, fullPath, gitPath);
-            clone(command);
+            clone(command, fullPath);
         }
         else {
             QMessageBox::warning(nullptr, QObject::tr("Oops"), QObject::tr("Incorrect link!"));
@@ -131,14 +127,6 @@ void urlManually(QTableWidget* mainList) {
 }
 
 void urlFromClipboard(QTableWidget* mainList) {
-    QItemSelectionModel* selectionModel = mainList->selectionModel();
-    QModelIndexList selectedIndexes = selectionModel->selectedIndexes();
-    int row = selectedIndexes.first().row();
-    int column = 0; // Из колонки "Путь"
-    QTableWidgetItem* pathItem = mainList->item(row, column);
-    QDir baseDir = QDir::current(); //Получаем директорию(откуда запущен nekosource.exe)
-    QString fullPath = baseDir.absoluteFilePath(pathItem->text());
-
     QInputDialog inputDialog;
     QString text = QGuiApplication::clipboard()->text().trimmed();
     if (!text.isEmpty()) {
@@ -154,20 +142,12 @@ void urlFromClipboard(QTableWidget* mainList) {
             QString repoName = parts[4];
             QString command;
 
-            if (std::filesystem::exists("PortableGit")) {
-                command = "PortableGit/bin/git.exe clone " + text + " repos/" + repoAuthor + "/" + repoName;
-            }
-            else {
-                command = "git clone " + text + " repos/" + repoAuthor + "/" + repoName;
-            }
+            command = gitPath() + " clone " + text + " repos/" + repoAuthor + "/" + repoName;
 
-            QString gitPath = "git";
-            if (std::filesystem::exists("PortableGit")) {
-                gitPath = baseDir.absolutePath() + "/PortableGit/bin/git.exe";
-            }
+            QDir baseDir = QDir::current();
+            QString fullPath = baseDir.absoluteFilePath("repos/"+repoAuthor + "/" + repoName);
 
-            clone(command);
-            //clone(command, fullPath, gitPath);
+            clone(command, fullPath);
         }
         else {
             QMessageBox::warning(nullptr, QObject::tr("Oops"), QObject::tr("There is no link in the clipboard!"));

@@ -13,7 +13,7 @@
     </message>
     <message>
         <source>Enter repository link:</source>
-        <translation>Введите ссылку на репозиторию:</translation>
+        <translation>Введите ссылку на репозиторий:</translation>
     </message>
     <message>
         <source>Incorrect link!</source>
@@ -148,11 +148,11 @@
     </message>
     <message>
         <source>The repository has been successfully cloned.</source>
-        <translation>Репозитория успешно клонирована.</translation>
+        <translation>Репозиторий успешно клонирован.</translation>
     </message>
     <message>
         <source>The repository was not found. Please check the link.</source>
-        <translation>Репозитория не найдена. Пожалуйста, проверьте ссылку.</translation>
+        <translation>Репозиторий не найден. Пожалуйста, проверьте ссылку.</translation>
     </message>
     <message>
         <source>Cloning the repository failed with an error:
