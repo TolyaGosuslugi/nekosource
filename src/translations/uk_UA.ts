@@ -126,11 +126,6 @@
         <translation>Вiдмiнити</translation>
     </message>
     <message>
-        <source>belarusian translation</source>
-        <translatorcomment>semkapc(Check About)</translatorcomment>
-        <translation type="vanished">переклад на білоруську мову</translation>
-    </message>
-    <message>
         <source>Push Changes</source>
         <translation>Опублікувати зміни</translation>
     </message>

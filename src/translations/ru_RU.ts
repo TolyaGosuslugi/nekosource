@@ -126,11 +126,6 @@
         <translation>перевод на украинский</translation>
     </message>
     <message>
-        <source>belarusian translation</source>
-        <translatorcomment>semkapc(Check About)</translatorcomment>
-        <translation type="vanished">перевод на беларусский</translation>
-    </message>
-    <message>
         <source>Push Changes</source>
         <translation>Опубликовать изменения</translation>
     </message>
